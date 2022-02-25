@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta name="description" content="home">
+    <meta charset="utf-8">
+    <title>ホーム</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+
+    <!--jsファイル読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" async></script>
+    <script src="js/index.js" defer></script>
+    <script src="common/common.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>作り物置き場(仮)<span>(header)</span></h1>
+    </header>
+    <!--<script>header();</script>-->
+
+    <nav id="breadcrumbs">
+        <p>パンくずリスト作成予定場所<span>(nav)</span></p>
+    </nav>
+    
+    <div class="container">
+        <main>
+            <h2 class="contents-name">作ったもの一覧</h2>
+            
+            <div class="contents">
+                <!--ここにアイテムを置いていく-->
+                <a href="sample/sample-3.html" class="contents-item">
+                    <p class="item-title">電卓</p>
+                    <p class="item-comment">JavaScriptで簡単な電卓作成</p>
+                    <div class="item-tag"></div>
+                </a>
+                <a href="sample/sample-2.html" class="contents-item">
+                    <p class="item-title">文字列中のスペースを削除</p>
+                    <p class="item-comment">replace・split・join・trimメソッドの説明</p>
+                    <div class="item-tag">メソッド</div>
+                    <div class="item-tag">解説</div>
+                </a>
+                <a href="sample/sample-1.html" class="contents-item">
+                    <p class="item-title">文字数カウント</p>
+                    <p class="item-comment">JavaScriptで文字数をカウントする</p>
+                    <div class="item-tag">文字数カウント</div>
+                    <div class="item-tag">作品</div>
+                    <div class="item-tag">JavaScript</div>
+                </a>
+                
+            </div>
+        </main>
+   
+        <aside class="sideber">
+            <div class="search-contents">
+                コンテンツを検索
+            </div>
+            <div class="updated_info">
+                更新情報
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        
+    </footer>
+
+</body>
+
+</html>

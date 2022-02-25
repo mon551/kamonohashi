@@ -1,0 +1,32 @@
+.calculator{
+    width: calc(100% - 10%);
+    height: calc(100% - 10%);
+    background-color: rgb(28, 32, 31);
+    border: rgb(31, 35, 61);
+    border-radius: 10px;
+    padding: 10px
+}
+
+.display{
+    font-size: 20px;
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 7px 10px;
+    text-align: right;
+}
+
+.keys{
+    text-align: center;
+}
+
+td *{
+    font-size: 2vmax;
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    height: 50px;
+    width: 100%;
+}

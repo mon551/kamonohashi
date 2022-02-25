@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>簡易的な電卓作成</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <script src="../js/common.js" defer></script>
+    <!--以下のsample番号を指定する-->
+    <link rel="stylesheet" href="../css/sample-3.css">
+    <script src="../js/sample-3.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>作り物置き場(仮)<span>(header)</span></h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <!--コンテンツのタイトルを表示-->
+            <div id="contents-title">電卓</div>
+            
+            <!--電卓実装-->
+            <div class="calculator">
+                <div class="display"></div>
+                <table class="keys">
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="C" onclick="clearScreen()"></td>
+                        <td><input type="button" value="×" onclick="eraseCharacter()"></td>
+                        <td><input type="button" value="/" onclick="outputFormula(this.value)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="7" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="8" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="9" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="*" onclick="outputFormula(this.value)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="4" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="5" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="6" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="-" onclick="outputFormula(this.value)"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="1" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="2" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="3" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="+" onclick="outputFormula(this.value)"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="button" value="0" onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="." onclick="outputFormula(this.value)"></td>
+                        <td><input type="button" value="=" onclick="calculate()"></td>
+                        
+                    </tr>
+                </table>
+            </div>
+
+            <!--解説-->
+            <div id="explanation">
+                <!--コードをタブ表示-->
+                <div id="tab-name">
+                    <div class="tab-pro active">JavaScript</div>
+                    <div class="tab-html">HTML</div>
+                    <div class="tab-css">CSS</div>
+                </div>
+
+                <!--タブの内容を記述-->
+                <pre class="panel-pro show">
+                    <code>
+                    </code>
+                </pre>
+                <pre class="panel-html">
+                    <code>
+                        
+                    </code>
+                </pre>
+                <pre class="panel-css">
+                    <code>
+                        
+                    </code>
+                </pre>
+            </div>
+        </main>
+        
+        
+    
+        <!--サイドバー-->
+        <aside class="sideber">
+            <div class="search-contents">
+                コンテンツを検索
+            </div>
+            <div class="updated_info">
+                更新情報
+            </div>
+        </aside>
+    </div>
+
+</body>
+
+</html>

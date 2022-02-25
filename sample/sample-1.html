@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>文字数カウント</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/sample-1.css">
+    <script src="../js/sample-1.js" defer></script>
+    <script src="../js/common.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>作り物置き場(仮)<span>(header)</span></h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <div id="contents-title">
+                文字数カウント
+            </div>
+            
+            <textarea></textarea>
+            <p class="result">(スペース込み)文字数：<span class="str_len1">0</span></p>
+            <p class="result">(スペース無視)文字数：<span class="str_len2">0</span></p>
+
+            <!--解説-->
+            <div id="explanation">
+                <!--コードをタブ表示-->
+                <div id="tab-name">
+                    <div class="tab-pro active">JavaScript</div>
+                    <div class="tab-html">HTML</div>
+                    <div class="tab-css">CSS</div>
+                </div>
+
+                <!--タブの内容を記述-->
+                <pre class="panel-pro show">
+                    <code>
+'use strict'
+
+// テキストエリア取得
+let textarea = document.querySelector("textarea");
+
+// 文字数を表示する場所を取得
+let str_len1 = document.querySelector(".str_len1");
+let str_len2 = document.querySelector(".str_len2");
+
+
+// テキストエリアに入力されるたびに呼び出す
+textarea.addEventListener("keyup", countLength)
+
+function countLength(){
+	// 現在のテキストを取得
+	const inputText1 = textarea.value;
+	//const inputText2 = inputText1.split(' ').join('');
+	const inputText2 = inputText1.replace(/\s+/g, '');
+
+	// 文字数を反映させる
+	str_len1.textContent = inputText1.length;
+	str_len2.textContent = inputText2.length;
+}
+                    </code>
+                </pre>
+                <pre class="panel-html">
+                    <code>
+                        
+                    </code>
+                </pre>
+                <pre class="panel-css">
+                    <code>
+                        
+                    </code>
+                </pre>
+            </div>
+        </main>
+        
+        
+    
+        <!--サイドバー-->
+        <aside class="sideber">
+            <div class="search-contents">
+                コンテンツを検索
+            </div>
+            <div class="updated_info">
+                更新情報
+            </div>
+        </aside>
+    </div>
+
+</body>
+
+</html>

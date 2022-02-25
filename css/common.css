@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    /*↓の指定はborder&paddingをwidthに含める文*/
+    /*webkitは古いブラウザに対応させる。(今回はGoogle ChromeとSafariに対応)*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("../img/background.jpg");
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/*仮置き*/
+span{
+    font-weight: lighter;
+    color: blue;
+    font-size: 0.8em;/*emは直近の親要素との比較*/
+}
+
+
+/*パンくずリスト*/
+nav{
+    margin: calc(100% - 99.5%) calc(100% - 91%);
+    display: none;
+}
+
+/*ヘッダー*/
+header {
+    text-align: center;
+    margin: 10px;
+    font-size: 1.2rem;/*remはhtmlのfontsize(16px)との比較*/
+}
+
+/*コンテナ*/
+/*メディアクエリをいつか使用*/
+.container{
+    display: flex;
+    margin: calc(100% - 98%) calc(100% - 90%);
+}
+
+/*コンテンツの入れ物*/
+main{
+    width: calc(100% - 25%);/*calcは演算子周りのスペース必須*/
+    height: auto;
+    border-radius: 10px;
+    margin: calc(100% - 95%);
+    margin-bottom: 0;
+    padding: calc(100% - 95%);
+    padding-top: 0;
+    margin-top: calc(100% - 99%);
+    background-color: rgb(246, 255, 255);
+}
+
+/*----------sampleページ---------*/
+/*アイテム*/
+#contents-title{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+/*コード表示*/
+#explanation{
+    margin: 2rem 0;
+}
+
+#tab-name *{
+    display: inline-block;
+}
+
+/*コード関連*/
+.code-title{
+    font-size: 1.8rem;
+    display: none;
+}
+
+pre{
+    width: 100%;
+    height: 200px;
+    font-size: 15px;
+    color: rgba(236, 231, 231, 0.863);
+    background: #25292f;
+    border-radius: 5px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 calc(100% - 98%);
+    display: none;
+}
+/*----------sampleページここまで----------*/
+
+/*サイドバー*/
+aside{
+    display: flex;
+    flex-flow: column;
+    width: calc(100% - 75%);
+}
+
+.sideber *{
+    height: calc(100% - 50%);
+    width: 100%;
+    background-color: rgb(246, 255, 255);
+    border-radius: 10px;
+    margin: 10px;
+    padding: calc(100% - 98%);
+}
+
+/*アイテムのメディアクエリ仮置き*/
+/*959px以下の画面サイズの時に反映*/
+@media screen and (max-width: 959px){
+
+    .item-title{
+        font-size: 1rem;   
+    }
+    
+}
+

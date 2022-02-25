@@ -1,0 +1,58 @@
+/*---コンテンツ関連---*/
+.contents-name{
+    background-color: rgb(246, 255, 255);
+    border: solid #ccc thick;
+    margin: 10px 0;
+    padding: 4px 7px;
+
+}
+
+.contents {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/*アイテム*/
+.contents-item{
+    height: auto;
+    width: calc(100% - 55%);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: rgb(246, 255, 255);
+    border: solid 3px #ccc;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, .5);
+    padding: 10px;
+    margin: 10px auto;  /*左右autoで中央揃えにしてくれる*/
+    overflow: hidden; /*はみ出た部分を隠す*/
+}
+
+.contents-item:hover{
+    box-shadow: none;
+    /*background-color: rgb(250, 250, 250);*/
+}
+
+.item-title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-bottom: solid #ccc;
+    padding-left: 8px;
+}
+
+.item-comment{
+    font-size: 1.2rem;
+    padding-left: 10px;
+    margin-top: 7px;
+}
+
+.item-tag{
+    content: '#';
+    font-size: 0.8rem;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+
