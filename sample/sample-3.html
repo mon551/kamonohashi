@@ -31,38 +31,47 @@
             <!--電卓実装-->
             <div class="calculator">
                 <div class="display"></div>
-                <table class="keys">
-                    <tr>
-                        <td></td>
-                        <td><input type="button" value="C" onclick="clearScreen()"></td>
-                        <td><input type="button" value="×" onclick="eraseCharacter()"></td>
-                        <td><input type="button" value="/" onclick="outputFormula(this.value)"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="7" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="8" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="9" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="*" onclick="outputFormula(this.value)"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="4" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="5" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="6" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="-" onclick="outputFormula(this.value)"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="1" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="2" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="3" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="+" onclick="outputFormula(this.value)"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="button" value="0" onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="." onclick="outputFormula(this.value)"></td>
-                        <td><input type="button" value="=" onclick="calculate()"></td>
-                        
-                    </tr>
-                </table>
+                <!--一段目-->
+                <div class="keys-row">
+                    <div class="erase">CE</div>
+                    <div class="erase">C</div>
+                    <div class="erase">バツ</div>
+                    <div class="ope" onclick="outputOpe()">÷</div>
+                </div>
+                <!--二段目-->
+                <div class="keys-row">
+                    <div class="value" onclick="outputFormula()">7</div>
+                    <div class="value" onclick="outputFormula()">8</div>
+                    <div class="value" onclick="outputFormula()">9</div>
+                    <div class="ope" onclick="outputOpe()">×</div>
+                </div>
+                <!--三段目-->
+                <div class="keys-row">
+                    <div class="value" onclick="outputFormula()">4</div>
+                    <div class="value" onclick="outputFormula()">5</div>
+                    <div class="value" onclick="outputFormula()">6</div>
+                    <div class="ope" onclick="outputOpe()">－</div>
+                </div>
+                <!--四段目-->
+                <div class="keys-row">
+                    <div class="value" onclick="outputFormula()">1</div>
+                    <div class="value" onclick="outputFormula()">2</div>
+                    <div class="value" onclick="outputFormula()">3</div>
+                    <div class="ope" onclick="outputOpe()">＋</div>
+                </div>
+                <!--五段目-->
+                <div class="keys-row">
+                    <div class="value" onclick="signChange()">±</div>
+                    <div class="value" onclick="outputFormula()">0</div>
+                    <div class="value" onclick="outputFormula()">.</div>
+                    <div class="ope" onclick="calculate()">=</div>
+                </div>
+
+
+
+
+
+                </div>
             </div>
 
             <!--解説-->
