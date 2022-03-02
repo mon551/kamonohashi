@@ -10,7 +10,7 @@
 
 /*出力画面*/
 .display{
-    width: auto; max-width: 550px;
+    width: auto;
     height: 80px;
     font-family: 'メイリオ', 'Meiryo', sans-serif;
     border-radius: 10px;
