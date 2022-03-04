@@ -3,21 +3,26 @@
 <head>
     <meta charset="utf-8">
     <title>文字数カウント</title>
+    <!--共通のパーツ読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/common.css">
+    <script src="../js/common.js" defer></script>
+
+    <!--個別ファイル読み込み-->
     <link rel="stylesheet" href="../css/sample-1.css">
     <script src="../js/sample-1.js" defer></script>
-    <script src="../js/common.js" defer></script>
+    
 </head>
 
 <body>
-    <header class="header">
-        <h1>作り物置き場(仮)<span>(header)</span></h1>
-    </header>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
 
+    <!--パンくずリスト-->
     <nav class="breadcrumb">
-        <ul class="breadcrumb-contents">
+        <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span>文字数カウント</span></li>
+            <li><span class="cuurent-page">文字数カウント</span></li>
         </ul>
     </nav>
 
@@ -32,68 +37,24 @@
             <p class="result">(スペース込み)文字数：<span class="str_len1">0</span></p>
             <p class="result">(スペース無視)文字数：<span class="str_len2">0</span></p>
 
-            <!--解説-->
-            <div id="explanation">
-                <!--コードをタブ表示-->
-                <div id="tab-name">
-                    <div class="tab-pro active">JavaScript</div>
-                    <div class="tab-html">HTML</div>
-                    <div class="tab-css">CSS</div>
-                </div>
-
-                <!--タブの内容を記述-->
-                <pre class="panel-pro show">
-                    <code>
-'use strict'
-
-// テキストエリア取得
-let textarea = document.querySelector("textarea");
-
-// 文字数を表示する場所を取得
-let str_len1 = document.querySelector(".str_len1");
-let str_len2 = document.querySelector(".str_len2");
-
-
-// テキストエリアに入力されるたびに呼び出す
-textarea.addEventListener("keyup", countLength)
-
-function countLength(){
-	// 現在のテキストを取得
-	const inputText1 = textarea.value;
-	//const inputText2 = inputText1.split(' ').join('');
-	const inputText2 = inputText1.replace(/\s+/g, '');
-
-	// 文字数を反映させる
-	str_len1.textContent = inputText1.length;
-	str_len2.textContent = inputText2.length;
-}
-                    </code>
-                </pre>
-                <pre class="panel-html">
-                    <code>
-                        
-                    </code>
-                </pre>
-                <pre class="panel-css">
-                    <code>
-                        
-                    </code>
-                </pre>
+            <!--以上実装-->
+            <div class="contents-comment">
             </div>
         </main>
-        
-        
     
         <!--サイドバー-->
-        <aside class="sideber">
-            <div class="search-contents">
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
                 コンテンツを検索
             </div>
-            <div class="updated_info">
-                更新情報
-            </div>
+            <!--更新情報-->
+            <div id="updated-info"></div>
         </aside>
     </div>
+
+    <!--フッター-->
+    <footer id="footer"></footer>
 
 </body>
 
