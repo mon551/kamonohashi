@@ -3,25 +3,25 @@
 <head>
     <meta charset="utf-8">
     <title>簡易的な電卓作成</title>
+    <!--共通のパーツ読み込み-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/common.css">
     <script src="../js/common.js" defer></script>
-    <!--以下のsample番号を指定する-->
+    <!--個別ファイル読み込み-->
     <link rel="stylesheet" href="../css/sample-3.css">
     <script src="../js/sample-3.js" defer></script>
 </head>
 
 <body>
-    <header class="header">
-        <h1>作り物置き場(仮)<span>(header)</span></h1>
-    </header>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
 
     <nav class="breadcrumb">
-        <ul class="breadcrumb-contents">
+        <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span>簡易的な電卓作成</span></li>
+            <li><span class="cuurent-page">簡易的な電卓作成</span></li>
         </ul>
     </nav>
-
 
     <div class="container">
         <main>
@@ -31,8 +31,8 @@
             <!--電卓実装-->
             <div class="calculator">
                 <div class="display">
-                    <div class="formula1"></div>
-                    <div class="formula2"></div>
+                    <div class="sub-disp"></div>
+                    <div class="main-disp"></div>
                 </div>
                 <table class="keys">
                     <tr>
@@ -67,46 +67,28 @@
                     </tr>
                 </table>
             </div>
-            <br><p>連続して計算したときにおかしくなる</p>
-            <!--解説-->
-            <div id="explanation">
-                <!--コードをタブ表示-->
-                <div id="tab-name">
-                    <div class="tab-pro active">JavaScript</div>
-                    <div class="tab-html">HTML</div>
-                    <div class="tab-css">CSS</div>
-                </div>
+            <!--以上実装-->
 
-                <!--タブの内容を記述-->
-                <pre class="panel-pro show">
-                    <code>
-                    </code>
-                </pre>
-                <pre class="panel-html">
-                    <code>
-                        
-                    </code>
-                </pre>
-                <pre class="panel-css">
-                    <code>
-                        
-                    </code>
-                </pre>
+            <div class="contents-comment">
+                <p>キー操作非対応</p>
             </div>
         </main>        
         
     
         <!--サイドバー-->
-        <aside class="sideber">
-            <div class="search-contents">
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
                 コンテンツを検索
             </div>
-            <div class="updated_info">
-                更新情報
-            </div>
+            
+            <!--更新情報-->
+            <div id="updated-info"></div>
         </aside>
     </div>
 
+    <!--フッター-->
+    <footer id="footer"></footer>
 </body>
 
 </html>

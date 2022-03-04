@@ -12,15 +12,11 @@
 body {
     background-image: url("../img/background.jpg");
     font-family: 'Noto Sans JP', sans-serif;
+    /*フッターを最下部に固定するため*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-
-/*仮置き*/
-span {
-    font-weight: lighter;
-    color: blue;
-    font-size: 0.8em;/*emは直近の親要素との比較*/
-}
-
 
 /*パンくずリスト*/
 .breadcrumb *, .breadcrumb *:after, .breadcrumb *:before {
@@ -29,30 +25,31 @@ span {
 }
 
 .breadcrumb {
-    margin: 1em calc(100% - 90%);
-	padding: 1em 2em;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1rem calc(100% - 90%);
+	padding: 0.8rem 1rem;
 	background-color: #999999;
 	color: #fff;
-	border-radius: 0.5em;
+	border-radius: 0.5rem;
 }
 
 .breadcrumb a{
     text-decoration: none;
-	color: #39345e;
+	color: #4747c2e5;
 }
 
-.breadcrumb-contents {
+.breadcrumb-items {
     list-style: none;
 	display: flex;
 	flex-wrap: wrap;
 }
 
 .breadcrumb li {
-	display: inline-block;
 	position: relative;
 	padding-right: calc(16px + 8px);    /*  */
 	margin-right: 8px;
-	color: #000000;
+	color: #2685f1;
 }
 
 .breadcrumb li::before {
@@ -61,7 +58,7 @@ span {
 	height: 1em;
 	line-height: 1;
 	text-align: center;
-	font-size: 1em;
+	font-size: 1.2em;
 	color: inherit;
 	position: absolute;
 	top: 50%;
@@ -73,7 +70,7 @@ span {
 .breadcrumb li:last-child {
 	margin-right: 0;
 	padding-right: 0;
-	color: #ffffff;
+	color: #021a5c;
 }
 
 .breadcrumb li:last-child::before {
@@ -85,11 +82,30 @@ span {
 header {
     text-align: center;
     margin: 10px;
-    font-size: 1.2rem;/*remはhtmlのfontsize(16px)との比較*/
+    font-weight: bold;
+    font-size: 2.5rem;/*remはhtmlのfontsize(16px)との比較*/
+}
+
+header a{
+    color: #000;
+    text-decoration: none;
+}
+
+header :hover{
+    color: rgb(116, 116, 116);
+}
+
+/*フッター*/
+footer {
+    height: 10vh;
+    width: 100%;
+    font-size: large;
+    text-align: center;
+    margin-top: auto;
+    background: rgb(246, 255, 255);
 }
 
 /*コンテナ*/
-/*メディアクエリをいつか使用*/
 .container{
     display: flex;
     margin: calc(100% - 98%) calc(100% - 90%);
@@ -115,50 +131,58 @@ main{
     margin: 1rem;
 }
 
-/*コード表示*/
-#explanation{
-    margin: 2rem 0;
-}
-
-#tab-name *{
-    display: inline-block;
-}
-
-/*コード関連*/
-.code-title{
-    font-size: 1.8rem;
-    display: none;
-}
-
-pre{
-    width: 100%;
-    height: 200px;
-    font-size: 15px;
-    color: rgba(236, 231, 231, 0.863);
-    background: #25292f;
-    border-radius: 5px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 calc(100% - 98%);
-    display: none;
-}
-/*----------sampleページここまで----------*/
-
-/*サイドバー*/
+/*サイドバー関連*/
 aside{
+    width: calc(100% - 75%);
+    height: auto;
     display: flex;
     flex-flow: column;
-    width: calc(100% - 75%);
 }
 
-.sideber *{
-    height: calc(100% - 50%);
+#sideber > div{
     width: 100%;
     background-color: rgb(246, 255, 255);
-    border-radius: 10px;
-    margin: 10px;
-    padding: calc(100% - 98%);
+    margin: 10px 0;
+    padding: 10px;
 }
+
+/*サイト内検索*/
+#search-contents {
+    border-radius: 20px;
+    height: 100px;
+}
+
+/*更新情報*/
+#updated-info {
+    height: 400px;
+    overflow-y: scroll;
+    scrollbar-color: rgb(75, 75, 75) auto;
+}
+
+#updated-title {
+    text-align: center;
+    text-shadow: 2px 2px 2px #808080;
+    font-size: 1.2rem;
+    border-bottom: solid 2px #636363;
+    padding-bottom: 2px;
+}
+
+.updated_content {
+    margin: 10px 0;
+    padding: 4px 0;
+    border-top: dashed thin #999999;
+    border-bottom: dashed thin #999999;
+}
+
+.date {
+    font-size: 1.2rem;
+}
+
+.date:after {
+    font-size: 1.4rem;
+    content: " :  "
+}
+
 
 /*アイテムのメディアクエリ仮置き*/
 /*959px以下の画面サイズの時に反映*/
@@ -170,7 +194,7 @@ aside{
 
     main {
         width: calc(100% - 1%);
-        margin: 10px calc(100% - 99%);
+        margin: 10px 1%;
     }
 
     aside {

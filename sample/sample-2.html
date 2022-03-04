@@ -3,28 +3,47 @@
 <head>
     <meta charset="utf-8">
     <title>文字列のスペースを削除する</title>
+    <!--共通のパーツ-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/common.js" defer></script>
     <link rel="stylesheet" href="../css/common.css">
+    <!--個別ファイル読み込み-->
     <link rel="stylesheet" href="../css/sample-.css">
     <script src="../js/sample-2.js" defer></script>
 </head>
 
 <body>
-    <header></header>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
+
+    <!--パンくずリスト-->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-items">
+            <li><a href="../index.html">HOME</a></li>
+            <li><span class="cuurent-page">TCP/IPについて</span></li>
+        </ul>
+    </nav>
 
     <div class="container">
         <main>
             <div class="item-title">
-                文字列のスペースを削除する
+                TCP/IPとは
+            </div>
+        </main>
+        
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
+                コンテンツを検索
             </div>
             
-            
-        </main>
-    
-        
-        <aside>
-            <div class="sideber"></div>
+            <!--更新情報-->
+            <div id="updated-info"></div>
         </aside>
     </div>
+
+    <!--フッター-->
+    <footer id="footer"></footer>
 
 </body>
 
