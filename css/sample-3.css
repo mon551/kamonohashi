@@ -22,12 +22,12 @@
 /*式*/
 .sub-disp {
     height: calc(100% - 70%);
-    font-size: 20px;
+    font-size: 1.1rem;
     filter: saturate(70%);
 }
 
 .main-disp{
-    font-size: 30px;
+    font-size: 2rem;
     height: calc(100% - 30%);
     padding-top: calc(100% - 99%);
 }
