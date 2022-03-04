@@ -9,7 +9,13 @@
 
     <!--jsファイル読み込み-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="js/common.js" defer></script>
+    <script>
+        $(function() {
+            $("#header").load("../common/header.html");
+            $("#updated-info").load("../common/updated-info.html");
+            $("#footer").load("../common/footer.html");
+        });
+    </script>
 </head>
 
 <body>
