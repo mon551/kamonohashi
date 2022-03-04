@@ -156,7 +156,7 @@ aside{
 #updated-info {
     height: 400px;
     overflow-y: scroll;
-    scrollbar-color: rgb(75, 75, 75) auto;
+    scrollbar-color: rgb(68, 68, 68) rgb(211, 211, 211);;
 }
 
 #updated-title {
