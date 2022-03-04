@@ -20,13 +20,13 @@
 }
 
 /*式*/
-.formula1 {
+.sub-disp {
     height: calc(100% - 70%);
     font-size: 20px;
     filter: saturate(70%);
 }
 
-.formula2{
+.main-disp{
     font-size: 30px;
     height: calc(100% - 30%);
     padding-top: calc(100% - 99%);
