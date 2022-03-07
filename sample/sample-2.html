@@ -9,7 +9,7 @@
     <script src="../js/common.js" defer></script>
     <link rel="stylesheet" href="../css/common.css">
     <!--個別ファイル読み込み-->
-    <link rel="stylesheet" href="../css/sample-.css">
+    <link rel="stylesheet" href="../css/sample-2.css">
     <script src="../js/sample-2.js" defer></script>
 </head>
 
@@ -27,11 +27,70 @@
 
     <div class="container">
         <main>
-            <div class="item-title">
-                TCP/IPとは
+            <div id="contents-title">TCP/IPとは</div>
+            <!--TCP/IPの全体像の説明-->
+            <div class="sub-title">TCP/IPの全体像</div>
+            <div class="description">
+                <p>TCP/IPを一言で表すと<span class="keyword">インターネット通信で標準的に利用されている通信プロトコル</span>です。</p>
+                <p>TCP/IPの階層モデルは以下の４階層で構成されている。<br>上から</p>
+                <ul>
+                    <li>アプリケーション層</li>
+                    <li>トランスポート層</li>
+                    <li>インターネット層</li>
+                    <li>ネットワークインターフェース層(またはネットワークアクセス層)</li>
+                </ul>
+                <p>TCP/IPは複数のプロトコルから構成されているが、その中でも通信で中心的な役割を果たす「TCP」と「IP」からTCP/IPと呼ばれる。</p>
+                <p class="supplement">※TCPとIPの他には、「DHCP」「DNS」「FTP」「HTTP」「SSH」などがある</p>
+                <br><p class="bottom-line">OSI参照モデルとの関係</p>
+                <img src="../img/sample-2_1..jpg">
+            </div>
+
+            <div class="sub-title">TCPとは</div>
+            <div class="description">
+                <p><span class="keyword">コネクション型のプロトコル</span>で、「Transmission Control Protocol」の略</p>
+                <p>相手に確実にデータが届いたか確認し、データの欠落などがあれば再送するという制御を行なう。</p>
+                <p><span class="emphasis">信頼性</span>は高いが、転送効率は低く、通信状況が悪いと遅延が生じたり通信不能になりやすい。</p>
+                <p>OSI参照モデル４層の<span class="keyword">トランスポート層</span>に属している。</p>
+                <p class="bottom-line">通信の種類は以下の通り</p>
+                <ul>
+                    <li><span class="keyword">コネクション型通信</span>ー－ー－通信開始前に相手との間で仮想的な通信路を確保する通信方式<br>つまり相手と接続出来ているか確認してから通信を行なう。</li>
+                    <li><span class="keyword">コネクションレス型通信</span>ー－通信開始前に相手との間で事前のやり取りをしない通信方式<br>つまり相手と接続できているか確認せず、<span class="emphasis">いきなり</span>データを送信する<br>UDPはこの方式を用いている。</li>
+                </ul>
+            </div>
+
+            <div class="sub-title">IPとは</div>
+            <div class="description">
+                <p>「Internet Protocol」の略</p>
+                <p>簡単に言えば<span class="emphasis">IPアドレス</span>を割り当てこれをもとに通信を行なうプロトコル</p>
+            </div>
+
+            <div class="sub-title">階層ごとの役割</div>
+            <div class="description">
+                
+            </div>
+
+            <div class="sub-title">まとめ</div>
+            <div class="description">
+                
+            </div>
+            <span class="keyword"></span>
+            <!--補足のとき--><span class="supplement"></span>
+
+            <div class="comment"></div>
+            <!--参考ページのURL-->
+            <div class="reference-page">
+                <!--以下参考ページ
+                https://wa3.i-3-i.info/word1540.html
+                https://www.infraexpert.com/study/tcpip.html
+                https://medium-company.com/tcp-ip/
+                https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E3%83%BB%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%88#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E3%83%BB%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%88%E3%81%AE%E9%9A%8E%E5%B1%A4
+                https://www.infraexpert.com/study/tcpip7.html
+                https://e-words.jp/w/TCP.html
+                -->
             </div>
         </main>
         
+        <!--サイドバー-->
         <aside id="sideber">
             <!--コンテンツを検索する-->
             <div id="search-contents">

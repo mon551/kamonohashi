@@ -2,71 +2,52 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title><!--ここにタイトルを記入--></title>
-    <link rel="stylesheet" href="../css/common.css">
+    <meta name="viewport" content="width=device-width"> 
+    <title>文字列のスペースを削除する</title>
+    <!--共通のパーツ-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/common.js" defer></script>
-    <!--以下のsample番号を指定する-->
+    <link rel="stylesheet" href="../css/common.css">
+    <!--個別ファイル読み込み-->
     <link rel="stylesheet" href="../css/sample-.css">
     <script src="../js/sample-.js" defer></script>
 </head>
 
 <body>
-    <header class="header">
-        <h1>作り物置き場(仮)</h1>
-    </header>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
 
+    <!--パンくずリスト-->
     <nav class="breadcrumb">
-        <ul class="breadcrumb-contents">
+        <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span>現在のページ名</span></li>
+            <li><span class="cuurent-page">TCP/IPについて</span></li>
         </ul>
     </nav>
 
     <div class="container">
         <main>
-            <!--コンテンツのタイトルを表示-->
-            <div id="contents-title"></div>
-            
-            <!--以下実装-->
-
-
-            <!--解説-->
-            <div id="explanation">
-                <!--コードをタブ表示-->
-                <div id="tab-name">
-                    <div class="tab-pro active">JavaScript</div>
-                    <div class="tab-html">HTML</div>
-                    <div class="tab-css">CSS</div>
-                </div>
-
-                <!--タブの内容を記述-->
-                <pre class="panel-pro show">
-                    <code>
-                    </code>
-                </pre>
-                <pre class="panel-html">
-                    <code>
-                        
-                    </code>
-                </pre>
-                <pre class="panel-css">
-                    <code>
-                        
-                    </code>
-                </pre>
+            <div id="contents-title">
+                TCP/IPとは
             </div>
         </main>
         
-        <!--サイドバー-->
-        <aside class="sideber">
-            <div class="search-contents">
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
                 コンテンツを検索
             </div>
-            <div class="updated_info">
-                更新情報
-            </div>
+            
+            <!--更新情報-->
+            <div id="updated-info"></div>
         </aside>
     </div>
 
+    <!--フッター-->
+    <footer id="footer"></footer>
+
 </body>
+
+
+
 </html>

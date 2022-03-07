@@ -123,23 +123,30 @@ main{
     background-color: rgb(246, 255, 255);
 }
 
-/*----------sampleページ---------*/
-/*アイテム*/
-#contents-title{
-    font-size: 2.5rem;
+/*------------sampleページ-----------*/
+/*アイテムタイトル*/
+#contents-title {
+    font-size: 2.2rem;
     font-weight: bold;
     margin: 1rem;
 }
 
-/*サイドバー関連*/
-aside{
+.sub-title {
+    font-size: 1.6rem;
+    border-left: solid 15px rgb(155, 155, 155);
+    box-shadow: 3px 2px 1px 1px rgb(100, 100, 100);
+    padding-left: 1rem;
+}
+
+/*以下サイドバー関連*/
+aside {
     width: calc(100% - 75%);
     height: auto;
     display: flex;
     flex-flow: column;
 }
 
-#sideber > div{
+#sideber > div {
     width: 100%;
     background-color: rgb(246, 255, 255);
     margin: 10px 0;
