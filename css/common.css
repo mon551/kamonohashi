@@ -199,9 +199,12 @@ aside {
         font-size: 1rem;   
     }
 
+    .container {
+        margin: 0.5%;
+    }
+
     main {
-        width: calc(100% - 1%);
-        margin: 10px 1%;
+        width: 100%;
     }
 
     aside {
