@@ -31,8 +31,9 @@
 }
 
 /*参考ページ*/
-.reference-page {
+.reference-page *{
     list-style-type: none;
+    margin: 0.2rem 0.5rem;
 }
 
 /*調整*/
@@ -40,7 +41,7 @@ img {
     width: 100%; 
 }
 
-ul {
+.parallel {
     padding-left: 1rem;
     margin-bottom: 1rem;
 }
