@@ -1,8 +1,4 @@
-p, ul{
-    margin-bottom: 0.5rem;
-}
-
-/*説明*/
+/*説明の部分*/
 .description {
     font-size: 1.2rem;
     margin: 1rem 1rem;
@@ -18,24 +14,41 @@ p, ul{
 .keyword {
     color: red;
 }
-
+/*強調*/
 .emphasis {
-    font-size: 1.1rem;
+    font-size: 1.18rem;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgb(194, 194, 194);
 }
 
 .bottom-line{
+    font-size: 1.3rem;
     text-shadow: 1px 1px 1px rgb(194, 194, 194);
     display: inline-block;
+    margin-top: 0.5rem;;
     padding: 0 0.5rem;
     border-bottom: solid thin #000;
 }
 
+/*参考ページ*/
+.reference-page {
+    list-style-type: none;
+}
+
+/*調整*/
+img {
+    width: 100%; 
+}
+
 ul {
     padding-left: 1rem;
+    margin-bottom: 1rem;
 }
 
 li {
     margin-bottom: 0.5rem;
+}
+
+p{
+    margin-bottom: 0.7rem;
 }
