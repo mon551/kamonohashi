@@ -1,0 +1,13 @@
+/*テーブル関連*/
+table {
+    border-collapse: collapse;  /* セルの線を重ねる*/
+}
+
+td {
+    border: solid;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+}
