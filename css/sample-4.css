@@ -1,13 +1,40 @@
 /*テーブル関連*/
 table {
+    margin: 2rem auto;
     border-collapse: collapse;  /* セルの線を重ねる*/
 }
 
-td {
+.cell {
+    padding: 0;
     border: solid;
+    height: 110px;
+    width: 110px;
 }
 
-.cell {
-    height: 100px;
-    width: 100px;
+#display {
+    width: calc(100% - 10%);
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: solid #333;
+}
+
+.end {
+    pointer-events: none;
+}
+
+/*調整*/
+img {
+    vertical-align: bottom; /*要素を下橋揃えにする*/
+}
+
+li {
+    margin-left: 0.5rem;
+}
+
+p {
+    font-size: 1.2rem;
 }
