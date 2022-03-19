@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"> 
-    <title><!--ここにタイトルを記入--></title>
+    <title>OSI参照モデル</title>
     <!--共通のパーツ-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../js/common.js" defer></script>
     <link rel="stylesheet" href="../css/common.css">
     <!--個別ファイル読み込み-->
-    <link rel="stylesheet" href="../css/sample-.css">
-    <script src="../js/sample-.js" defer></script>
+    <link rel="stylesheet" href="../css/sample-6.css">
+    <script src="../js/sample-6.js" defer></script>
 </head>
 
 <body>
@@ -21,15 +21,18 @@
     <nav class="breadcrumb">
         <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span class="cuurent-page">TCP/IPについて</span></li>
+            <li><span class="cuurent-page">入力された文字に応じてテキストを変更</span></li>
         </ul>
     </nav>
 
     <div class="container">
         <main>
             <div id="contents-title">
-                TCP/IPとは
+                入力された文字に応じてテキストを変更
             </div>
+            
+            <textarea></textarea>
+            <p id="log"></p>
         </main>
         
         <aside id="sideber">
@@ -47,4 +50,5 @@
     <footer id="footer"></footer>
 
 </body>
+
 </html>
