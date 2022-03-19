@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> 
+    <title>カレンダー</title>
+    <!--共通のパーツ-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/common.js" defer></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <!--個別ファイル読み込み-->
+    <link rel="stylesheet" href="../css/sample-5.css">
+    <script src="../js/sample-5.js" defer></script>
+</head>
+
+<body>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
+
+    <!--パンくずリスト-->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-items">
+            <li><a href="../index.html">HOME</a></li>
+            <li><span class="cuurent-page">カレンダー</span></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <div id="contents-title"> 
+                カレンダー
+            </div>
+            <div id='calendar'></div>
+        </main>
+        
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
+                コンテンツを検索
+            </div>
+            
+            <!--更新情報-->
+            <div id="updated-info"></div>
+        </aside>
+    </div>
+
+    <!--フッター-->
+    <footer id="footer"></footer>
+
+</body>
+
+
+
+</html>
