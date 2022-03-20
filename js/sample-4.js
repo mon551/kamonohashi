@@ -21,21 +21,11 @@ const winPatterns = [
 for(let i=0; i<field.length; i++){
 
     table[i].onclick = () =>{
-        // imgタグを新しく作る
-        const newImg = document.createElement("img");
 
         // 〇×がないか判定
         if(field[i] === undefined){
 
-            // 手番に応じた画像を読み込む
-            if(turn === 1){
-                newImg.src = "../img/sample-4_circle.jpg";
-            } else {
-                newImg.src = "../img/sample-4_cross.jpg";
-            }
-            // 画像サイズを整える(px)
-            newImg.width = 100;
-            newImg.height = 100;
+            const newImg = getImgSrc(turn);
 
             // 画像を表示する
             table[i].appendChild(newImg);
@@ -53,7 +43,7 @@ for(let i=0; i<field.length; i++){
             if(winFlg) com();
 
             // 終了したか確認
-            isFinished();
+            if(winFlg) isFinished();
         }
     }
 }
@@ -67,19 +57,8 @@ function com() {
         random = Math.floor(Math.random() * field.length);
     }
 
-    // imgタグを新しく作る
-    const newImg = document.createElement("img");
-
-    // 手番に応じた画像を読み込む
-    if(turn === 1){
-        newImg.src = "../img/sample-4_circle.jpg";
-    } else {
-        newImg.src = "../img/sample-4_cross.jpg";
-    }
-    // 画像サイズを整える
-    newImg.width = 100;
-    newImg.height = 100;
-
+    // 表示する画像を取得
+    const newImg = getImgSrc(turn);
     
     // 画像を表示する
     table[random].appendChild(newImg);
@@ -93,7 +72,7 @@ function com() {
 
 //終了したか判定
 function isFinished() {
-    let winner;
+    let winner = 0;
 
     // 〇か✕が揃ったか検索
     for(let i=0; i<winPatterns.length; i++){
@@ -102,7 +81,7 @@ function isFinished() {
         
         // 勝者がいるか検索
         winner = 0;
-        for(let j=0; field[order[j] ] !== undefined; j++){
+        for(let j=0; j<3 && field[order[j] ] !== undefined; j++){
             winner += field[order[j] ]
         }
 
@@ -110,24 +89,56 @@ function isFinished() {
         if(winner === -3 || winner === 3){
             winner = (winner===3 ? 1 : -1);
             winFlg = false;
-            // 結果を表示する
-            desplayResult(winner);
+            displayResult(winner);
             break;
         }
+    }
+
+    // 引き分けか検索
+    let i;
+    for(i=0; i<field.length && field[i] !== undefined; i++);
+    if(i === field.length && winFlg === true){
+        console.log("入った");
+        winFlg = false;
+        displayResult(0);
     }
 }
 
 // 結果を表示
-function desplayResult(winner) {
+function displayResult(winner) {
+    let result
     // テーブルのイベントを無効化する
     const game = document.getElementById("table");
     game.classList.add("end");
 
     // リザルトコメントを代入する
-    const win = (winner===1 ? "〇" : "✕");
-    const result = `${win}が勝ちました。`;
-
+    if(winner === 0){
+        result = "引き分けです。";
+    } else {
+        const win = (winner===1 ? "〇" : "✕");
+        result = `${win}が勝ちました。`;
+    }
+    
     // 結果を表示する
-    const display = document.getElementById("display");
+    let display = document.getElementById("display");
     display.textContent = result;
+}
+
+// 表示する画像を取得
+function getImgSrc(turn){
+
+    // imgタグを新しく作る
+    const newImg = document.createElement("img");
+
+    // 手番に応じた画像を読み込む
+    if(turn === 1){
+        newImg.src = "../img/sample-4_circle.jpg";
+    } else {
+        newImg.src = "../img/sample-4_cross.jpg";
+    }
+    // 画像サイズを整える(px)
+    newImg.width = 100;
+    newImg.height = 100;
+
+    return newImg;
 }
