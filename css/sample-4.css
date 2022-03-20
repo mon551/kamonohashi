@@ -11,6 +11,10 @@ table {
     width: 110px;
 }
 
+.cell:hover{
+    background: rgb(211, 211, 211);
+}
+
 #display {
     width: calc(100% - 10%);
     height: 5rem;
@@ -18,12 +22,34 @@ table {
     padding: 0.5rem 0;
     text-align: center;
     font-size: 2rem;
+    color: rgb(73, 73, 73);
     border-radius: 10px;
-    border: solid #333;
+    border: solid rgb(190, 190, 190);
 }
 
-.end {
+#field {
+    height: 400px;
+}
+
+#field .first-second {
+    width: 50%;
+    margin: 2rem auto;
+    text-align: center;
+    font-size: 3rem;
+    border: solid;
+    border-radius: 10px;
+}
+
+.event-none {
     pointer-events: none;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.is-visible {
+    
 }
 
 /*調整*/

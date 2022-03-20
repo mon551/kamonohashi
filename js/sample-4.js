@@ -4,6 +4,10 @@ let turn = 1;
 let table = document.querySelectorAll(".cell");
 let field = Array(9);
 let winFlg = true;
+// 順番を取得する
+let firstSecond = document.querySelectorAll(".first-second");
+const game = document.getElementById("table");
+let display = document.getElementById("display");
 
 // 勝ち条件
 const winPatterns = [
@@ -17,33 +21,46 @@ const winPatterns = [
     [2, 4, 6]
 ];
 
+// ゲームスタート
+function gameStart(value) {
+    if(value === 1) com();
+    player();
+    
+    firstSecond.forEach(function (firstSecond) {
+        firstSecond.classList.add("is-hidden");
+    });
+    game.classList.remove("is-hidden");
+    display.textContent = "ゲームスタート";
+}
+
 // クリックされた時の処理
-for(let i=0; i<field.length; i++){
+function player() {
+    for(let i=0; i<field.length; i++){
 
-    table[i].onclick = () =>{
+        table[i].onclick = () =>{
+            // 〇×がないか判定
+            if(field[i] === undefined){
 
-        // 〇×がないか判定
-        if(field[i] === undefined){
+                const newImg = getImgSrc(turn);
 
-            const newImg = getImgSrc(turn);
+                // 画像を表示する
+                table[i].appendChild(newImg);
 
-            // 画像を表示する
-            table[i].appendChild(newImg);
+                // 置かれた場所にマークする
+                field[i] = turn;
 
-            // 置かれた場所にマークする
-            field[i] = turn;
+                // 手番を変更する
+                turn = (turn===1 ? -1 : 1);
+                
+                // 終了したか確認
+                isFinished();
 
-            // 手番を変更する
-            turn = (turn===1 ? -1 : 1);
-            
-            // 終了したか確認
-            isFinished();
+                // コンピュータの応手
+                if(winFlg) com();
 
-            // コンピュータの応手
-            if(winFlg) com();
-
-            // 終了したか確認
-            if(winFlg) isFinished();
+                // 終了したか確認
+                if(winFlg) isFinished();
+            }
         }
     }
 }
@@ -98,7 +115,6 @@ function isFinished() {
     let i;
     for(i=0; i<field.length && field[i] !== undefined; i++);
     if(i === field.length && winFlg === true){
-        console.log("入った");
         winFlg = false;
         displayResult(0);
     }
@@ -108,8 +124,7 @@ function isFinished() {
 function displayResult(winner) {
     let result
     // テーブルのイベントを無効化する
-    const game = document.getElementById("table");
-    game.classList.add("end");
+    game.classList.add("event-none");
 
     // リザルトコメントを代入する
     if(winner === 0){
@@ -120,7 +135,6 @@ function displayResult(winner) {
     }
     
     // 結果を表示する
-    let display = document.getElementById("display");
     display.textContent = result;
 }
 
