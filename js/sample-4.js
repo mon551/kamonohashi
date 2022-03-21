@@ -23,18 +23,19 @@ const winPatterns = [
 
 // ゲームスタート
 function gameStart(value) {
-    if(value === 1) com();
-    player();
-    
     firstSecond.forEach(function (firstSecond) {
         firstSecond.classList.add("is-hidden");
     });
     game.classList.remove("is-hidden");
     display.textContent = "ゲームスタート";
+
+    if(value === 1) com();
+    player();
 }
 
 // クリックされた時の処理
 function player() {
+    console.log("入った");
     for(let i=0; i<field.length; i++){
 
         table[i].onclick = () =>{
