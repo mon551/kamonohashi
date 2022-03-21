@@ -22,15 +22,34 @@ prev_month.setMonth(prev_month.getMonth()-1);
 //ヘッダーの要素
 var cHeader=document.createElement('div');
 cHeader.className='calender_Header';
+
 //見出し
 var cTitle=document.createElement('div');
-cTitle.className='calender_Title';
+cTitle.className='calender-header--Title';
+var cTitleText=document.createTextNode(year+'年'+month+'月');
+
 cHeader.appendChild(cHeader);
 cTitle.appendChild(cTitle);
 //prevボタン追加
 var cPrev=document.createElement('button');
+cPrev.className='calender-header--Prev';
+var cPrevText=document.createTextNode('prev');
+cPrev.appendChild(cPrevText);
+//prevボタンが押された際
+cPrev.addEventListener('click',function(){
+    addcalender(warapper,prev_month.getFullYear(),(prev_month.getMonth()+1));
+},false);
+cHeader.appendChild(cPrev);
 
-
+//nextボタン追加
+var cNext=documet.createElement('butoon');
+cNext.classNema='calender-header--Next';
+var cNextText=document.createTextNode('next');
+cNext.appendChild(cNextText);
+//nextボタンが押された際
+cNext.addEventListner('click',function(){
+    addcalender(warapper,next_month.getFullYear(),(next_month.getMonth()+1));
+},false);
 
 }
 
