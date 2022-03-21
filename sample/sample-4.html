@@ -30,14 +30,14 @@
             <div id="contents-title">まるばつゲームの作成</div>
 
             <div id="display">
-                <div class="first-second">先攻後攻を選んでください。</div>
+                <div class="order-comment">先攻後攻を選んでください。</div>
             </div>
 
             <div id="field">
-                <div class="first-second" onclick="gameStart(0)">先攻</div>
-                <div class="first-second" onclick="gameStart(1)">後攻</div>
+                <div class="order" onclick="gameStart(0)">先攻</div>
+                <div class="order" onclick="gameStart(1)">後攻</div>
 
-                <table id="table" class="event-none is-hidden">
+                <table id="table" class="is-hidden">
                     <tr>
                         <td class="cell"></td>
                         <td class="cell"></td>
@@ -54,14 +54,13 @@
                         <td class="cell"></td>
                     </tr>
                 </table>
+                <div id="reload" class="is-hidden">もう一度遊ぶ</div>
             </div>
 
             <div id="comment">
                 <p class="comment-title">これから追加したいもの</p>
                 <ul>
                     <li>相手がランダムに打ってくる部分の修正</li>
-                    <li>打ってから相手が打つまでのディレイ</li>
-                    <li>いまどちらのターンか表示する</li>
                 </ul>
             </div>
         </main>

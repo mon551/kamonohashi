@@ -11,10 +11,11 @@ table {
     width: 110px;
 }
 
-.cell:hover{
+.order:hover, .cell:hover, #reload:hover{
     background: rgb(211, 211, 211);
 }
 
+/*表示する画面*/
 #display {
     width: calc(100% - 10%);
     height: 5rem;
@@ -27,11 +28,12 @@ table {
     border: solid rgb(190, 190, 190);
 }
 
+/*フィールド*/
 #field {
     height: 400px;
 }
 
-#field .first-second {
+.order, #reload{
     width: 50%;
     margin: 2rem auto;
     text-align: center;
@@ -40,16 +42,13 @@ table {
     border-radius: 10px;
 }
 
+/*状態*/
 .event-none {
     pointer-events: none;
 }
 
 .is-hidden {
     display: none;
-}
-
-.is-visible {
-    
 }
 
 /*調整*/

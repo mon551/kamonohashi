@@ -5,9 +5,12 @@ let table = document.querySelectorAll(".cell");
 let field = Array(9);
 let winFlg = true;
 // 順番を取得する
-let firstSecond = document.querySelectorAll(".first-second");
+let firstSecond = document.querySelectorAll(".order");
 const game = document.getElementById("table");
 let display = document.getElementById("display");
+const reload = document.querySelector("#reload");
+// sleep関数
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // 勝ち条件
 const winPatterns = [
@@ -35,9 +38,9 @@ function gameStart(value) {
 
 // クリックされた時の処理
 function player() {
-    console.log("入った");
-    for(let i=0; i<field.length; i++){
 
+    for(let i=0; i<field.length; i++){
+        
         table[i].onclick = () =>{
             // 〇×がないか判定
             if(field[i] === undefined){
@@ -67,7 +70,11 @@ function player() {
 }
 
 // コンピュータの応手
-function com() {
+async function com() {
+    // コンピュータ手番表示
+    display.textContent = "コンピュータの番です";
+    game.classList.add("event-none");
+
     // 0~9のランダム生成
     let random = Math.floor(Math.random() * field.length);
     
@@ -78,6 +85,9 @@ function com() {
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
     
+    // 一時停止
+    await sleep(1500);
+
     // 画像を表示する
     table[random].appendChild(newImg);
 
@@ -86,6 +96,10 @@ function com() {
 
     // 手番を変更する
     turn = (turn===1 ? -1 : 1);
+
+    // プレイヤー手番表示(ここに置くのは違和感)
+    display.textContent = "プレイヤーの番です";
+    game.classList.remove("event-none");
 }
 
 //終了したか判定
@@ -112,7 +126,7 @@ function isFinished() {
         }
     }
 
-    // 引き分けか検索
+    // 引き分けか調べる
     let i;
     for(i=0; i<field.length && field[i] !== undefined; i++);
     if(i === field.length && winFlg === true){
@@ -126,6 +140,7 @@ function displayResult(winner) {
     let result
     // テーブルのイベントを無効化する
     game.classList.add("event-none");
+    reload.classList.remove("is-hidden");
 
     // リザルトコメントを代入する
     if(winner === 0){
@@ -138,6 +153,9 @@ function displayResult(winner) {
     // 結果を表示する
     display.textContent = result;
 }
+
+// リロード(もう一度遊ぶ)
+reload.onclick = () => { document.location.reload() };
 
 // 表示する画像を取得
 function getImgSrc(turn){
