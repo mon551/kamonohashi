@@ -9,8 +9,6 @@ let firstSecond = document.querySelectorAll(".order");
 const game = document.getElementById("table");
 let display = document.getElementById("display");
 const reload = document.querySelector("#reload");
-// sleep関数
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // 勝ち条件
 const winPatterns = [
@@ -32,7 +30,7 @@ function gameStart(value) {
     game.classList.remove("is-hidden");
     display.textContent = "ゲームスタート";
 
-    if(value === 1) com();
+    if(value === 1) setTimeout(com(), 1500);
     player();
 }
 
@@ -43,7 +41,7 @@ function player() {
         
         table[i].onclick = () =>{
             // 〇×がないか判定
-            if(field[i] === undefined){
+            if(field[i] === undefined && winFlg === true){
 
                 const newImg = getImgSrc(turn);
 
@@ -60,10 +58,11 @@ function player() {
                 isFinished();
 
                 // コンピュータの応手
-                if(winFlg) com();
-
-                // 終了したか確認
-                if(winFlg) isFinished();
+                if(winFlg){
+                    setTimeout(com(), 1500);
+                    // 終了したか確認
+                    isFinished();
+                } 
             }
         }
     }
@@ -86,7 +85,7 @@ async function com() {
     const newImg = getImgSrc(turn);
     
     // 一時停止
-    await sleep(1500);
+    //await sleep(1500);
 
     // 画像を表示する
     table[random].appendChild(newImg);
