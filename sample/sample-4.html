@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> 
+    <title>まるばつゲーム作成</title>
+    <!--共通のパーツ-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/common.js" defer></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <!--個別ファイル読み込み-->
+    <link rel="stylesheet" href="../css/sample-4.css">
+    <script src="../js/sample-4.js" defer></script>
+</head>
+
+<body>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
+
+    <!--パンくずリスト-->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-items">
+            <li><a href="../index.html">HOME</a></li>
+            <li><span class="cuurent-page">まるばつゲーム作成</span></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <div id="contents-title">まるばつゲームの作成</div>
+
+            <div id="display">
+                <div>先攻後攻を選んでください。</div>
+            </div>
+
+            <div id="field">
+                <div class="order" onclick="gameStart(0)">先攻</div>
+                <div class="order" onclick="gameStart(1)">後攻</div>
+
+                <table id="table" class="is-hidden">
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                </table>
+                <div id="reload" class="is-hidden">もう一度遊ぶ</div>
+            </div>
+
+            <div id="comment">
+                <p class="comment-title">これから追加したいもの</p>
+                <ul>
+                    <li>相手がランダムに打ってくる部分の修正</li>
+                </ul>
+            </div>
+        </main>
+        
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
+                コンテンツを検索
+            </div>
+            
+            <!--更新情報-->
+            <div id="updated-info"></div>
+        </aside>
+    </div>
+
+    <!--フッター-->
+    <footer id="footer"></footer>
+
+</body>
+
+</html>

@@ -76,7 +76,7 @@ body {
 .breadcrumb li:last-child::before {
 	content: normal;
 }
-
+/*-------ここまでパンくずリスト-------------*/
 
 /*ヘッダー*/
 header {
@@ -111,7 +111,7 @@ footer {
     margin: calc(100% - 98%) calc(100% - 90%);
 }
 
-/*コンテンツの入れ物*/
+/*コンテンツの入れ物(main)*/
 main{
     width: calc(100% - 25%);/*calcは演算子周りのスペース必須*/
     height: auto;
@@ -123,7 +123,7 @@ main{
     background-color: rgb(246, 255, 255);
 }
 
-/*------------sampleページ-----------*/
+/*------------sampleページ(sample)-----------*/
 /*アイテムタイトル*/
 #contents-title {
     font-size: 2.2rem;
@@ -139,7 +139,60 @@ main{
     margin-top: 2rem;
 }
 
-/*以下サイドバー関連*/
+#comment {
+    border-top: solid ;
+    margin: 4rem 0 1rem;
+}
+
+.comment-title {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px 1px rgb(100, 100, 100);
+}
+
+/*説明の部分*/
+.description {
+    font-size: 1.2rem;
+    margin: 1rem 1rem;
+}
+
+/*補足*/
+.supplement {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgb(107, 107, 107);
+}
+
+/*キーワード*/
+.keyword {
+    color: red;
+}
+
+/*強調*/
+.emphasis {
+    font-size: 1.18rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgb(194, 194, 194);
+}
+
+/*下線強調*/
+.bottom-line{
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 1px rgb(194, 194, 194);
+    display: inline-block;
+    margin-top: 0.5rem;;
+    padding: 0 0.5rem;
+    border-bottom: solid thin #000;
+}
+
+/*参考ページ*/
+.reference-page *{
+    list-style-type: none;
+    margin: 0.2rem 0.5rem;
+}
+
+/*-----------サイドバー関連(side)----------------*/
 aside {
     width: calc(100% - 75%);
     height: auto;
