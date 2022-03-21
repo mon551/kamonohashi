@@ -29,33 +29,39 @@
         <main>
             <div id="contents-title">まるばつゲームの作成</div>
 
-            <div id="display"></div>
-            <table id="table">
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-                <tr>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                    <td class="cell"></td>
-                </tr>
-            </table>
+            <div id="display">
+                <div class="order-comment">先攻後攻を選んでください。</div>
+            </div>
+
+            <div id="field">
+                <div class="order" onclick="gameStart(0)">先攻</div>
+                <div class="order" onclick="gameStart(1)">後攻</div>
+
+                <table id="table" class="is-hidden">
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                    <tr>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                        <td class="cell"></td>
+                    </tr>
+                </table>
+                <div id="reload" class="is-hidden">もう一度遊ぶ</div>
+            </div>
 
             <div id="comment">
-                <p>これから追加したいもの</p>
+                <p class="comment-title">これから追加したいもの</p>
                 <ul>
-                    <li>相手はランダムに打ってくるのでそこの修正</li>
-                    <li>打ってから相手が打つまでのディレイ</li>
-                    <li>いまどちらのターンか表示する</li>
+                    <li>相手がランダムに打ってくる部分の修正</li>
                 </ul>
-                
             </div>
         </main>
         

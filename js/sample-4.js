@@ -4,6 +4,13 @@ let turn = 1;
 let table = document.querySelectorAll(".cell");
 let field = Array(9);
 let winFlg = true;
+// 順番を取得する
+let firstSecond = document.querySelectorAll(".order");
+const game = document.getElementById("table");
+let display = document.getElementById("display");
+const reload = document.querySelector("#reload");
+// sleep関数
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // 勝ち条件
 const winPatterns = [
@@ -17,39 +24,57 @@ const winPatterns = [
     [2, 4, 6]
 ];
 
+// ゲームスタート
+function gameStart(value) {
+    firstSecond.forEach(function (firstSecond) {
+        firstSecond.classList.add("is-hidden");
+    });
+    game.classList.remove("is-hidden");
+    display.textContent = "ゲームスタート";
+
+    if(value === 1) com();
+    player();
+}
+
 // クリックされた時の処理
-for(let i=0; i<field.length; i++){
+function player() {
 
-    table[i].onclick = () =>{
+    for(let i=0; i<field.length; i++){
+        
+        table[i].onclick = () =>{
+            // 〇×がないか判定
+            if(field[i] === undefined){
 
-        // 〇×がないか判定
-        if(field[i] === undefined){
+                const newImg = getImgSrc(turn);
 
-            const newImg = getImgSrc(turn);
+                // 画像を表示する
+                table[i].appendChild(newImg);
 
-            // 画像を表示する
-            table[i].appendChild(newImg);
+                // 置かれた場所にマークする
+                field[i] = turn;
 
-            // 置かれた場所にマークする
-            field[i] = turn;
+                // 手番を変更する
+                turn = (turn===1 ? -1 : 1);
+                
+                // 終了したか確認
+                isFinished();
 
-            // 手番を変更する
-            turn = (turn===1 ? -1 : 1);
-            
-            // 終了したか確認
-            isFinished();
+                // コンピュータの応手
+                if(winFlg) com();
 
-            // コンピュータの応手
-            if(winFlg) com();
-
-            // 終了したか確認
-            if(winFlg) isFinished();
+                // 終了したか確認
+                if(winFlg) isFinished();
+            }
         }
     }
 }
 
 // コンピュータの応手
-function com() {
+async function com() {
+    // コンピュータ手番表示
+    display.textContent = "コンピュータの番です";
+    game.classList.add("event-none");
+
     // 0~9のランダム生成
     let random = Math.floor(Math.random() * field.length);
     
@@ -60,6 +85,9 @@ function com() {
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
     
+    // 一時停止
+    await sleep(1500);
+
     // 画像を表示する
     table[random].appendChild(newImg);
 
@@ -68,6 +96,10 @@ function com() {
 
     // 手番を変更する
     turn = (turn===1 ? -1 : 1);
+
+    // プレイヤー手番表示(ここに置くのは違和感)
+    display.textContent = "プレイヤーの番です";
+    game.classList.remove("event-none");
 }
 
 //終了したか判定
@@ -94,11 +126,10 @@ function isFinished() {
         }
     }
 
-    // 引き分けか検索
+    // 引き分けか調べる
     let i;
     for(i=0; i<field.length && field[i] !== undefined; i++);
     if(i === field.length && winFlg === true){
-        console.log("入った");
         winFlg = false;
         displayResult(0);
     }
@@ -108,8 +139,8 @@ function isFinished() {
 function displayResult(winner) {
     let result
     // テーブルのイベントを無効化する
-    const game = document.getElementById("table");
-    game.classList.add("end");
+    game.classList.add("event-none");
+    reload.classList.remove("is-hidden");
 
     // リザルトコメントを代入する
     if(winner === 0){
@@ -120,9 +151,11 @@ function displayResult(winner) {
     }
     
     // 結果を表示する
-    let display = document.getElementById("display");
     display.textContent = result;
 }
+
+// リロード(もう一度遊ぶ)
+reload.onclick = () => { document.location.reload() };
 
 // 表示する画像を取得
 function getImgSrc(turn){

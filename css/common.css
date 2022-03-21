@@ -139,6 +139,18 @@ main{
     margin-top: 2rem;
 }
 
+#comment {
+    border-top: solid ;
+    margin: 4rem 0 1rem;
+}
+
+.comment-title {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px 1px rgb(100, 100, 100);
+}
+
 /*説明の部分*/
 .description {
     font-size: 1.2rem;
@@ -163,6 +175,7 @@ main{
     font-weight: bold;
     text-shadow: 1px 1px 1px rgb(194, 194, 194);
 }
+
 /*下線強調*/
 .bottom-line{
     font-size: 1.3rem;
@@ -173,13 +186,11 @@ main{
     border-bottom: solid thin #000;
 }
 
-
 /*参考ページ*/
 .reference-page *{
     list-style-type: none;
     margin: 0.2rem 0.5rem;
 }
-
 
 /*-----------サイドバー関連(side)----------------*/
 aside {
