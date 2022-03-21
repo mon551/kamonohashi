@@ -1,11 +1,40 @@
-'use strict'
-var year=2018;
-var month=5;
 window.onload=function(){
-    var data=generate_month_calendar(year,month);
-    document.getElementById('calendar').appendChild(data);
+    var current= new Date();
+    var year=current.getFullYear();
+    var month=current.getMonth()+1;
+    var wrapper=documentgetElementById('calender');
+    addcalender(wrapper,year,month);
 }
-function generate_month_calendar(year,month){
+function addcalender(warapper,year,month){
+    warapper.textContent=null;
+    var headData=generate_calender_header(warapper,yaer,month);
+    var dobyData=generate_month_calender(year,month);
+    warapper.appendChild(headData);
+    warapper.appendChild(bodyData);
+}
+function generate_calender_header(warapper,year,month){
+//次月のカレンダー取得
+var next_month=new Date(year,(month-1));
+next_month.setMonth(next_month.getMonth()+1);
+// 前月のカレンダー取得
+var prev_month=new Date(year,(month-1));
+prev_month.setMonth(prev_month.getMonth()-1);
+//ヘッダーの要素
+var cHeader=document.createElement('div');
+cHeader.className='calender_Header';
+//見出し
+var cTitle=document.createElement('div');
+cTitle.className='calender_Title';
+cHeader.appendChild(cHeader);
+cTitle.appendChild(cTitle);
+//prevボタン追加
+var cPrev=document.createElement('button');
+
+
+
+}
+
+function generate_month_calender(year,month){
     var weekdayData=['日','月','火','水','木','金','土'];
     var calendarData=get_month_calendar(year,month);
     var i=calendarData[0]['weekday'];
