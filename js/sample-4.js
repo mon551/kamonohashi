@@ -30,7 +30,7 @@ function gameStart(value) {
     game.classList.remove("is-hidden");
     display.textContent = "ゲームスタート";
 
-    if(value === 1) setTimeout(com(), 1500);
+    if(value === 1) com();
     player();
 }
 
@@ -59,7 +59,7 @@ function player() {
 
                 // コンピュータの応手
                 if(winFlg){
-                    setTimeout(com(), 1500);
+                    com();
                     // 終了したか確認
                     isFinished();
                 } 
@@ -69,36 +69,36 @@ function player() {
 }
 
 // コンピュータの応手
-async function com() {
+function com() {
     // コンピュータ手番表示
     display.textContent = "コンピュータの番です";
     game.classList.add("event-none");
 
     // 0~9のランダム生成
     let random = Math.floor(Math.random() * field.length);
-    
+        
     while(field[random] !== undefined){
         random = Math.floor(Math.random() * field.length);
     }
 
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
-    
-    // 一時停止
-    //await sleep(1500);
 
-    // 画像を表示する
-    table[random].appendChild(newImg);
+    // 打つまでにディレイを生じさせる
+    setTimeout( () => {
+        // 画像を表示する
+        table[random].appendChild(newImg);
 
-    // 置かれた場所にマークする
-    field[random] = turn;
+        // 置かれた場所にマークする
+        field[random] = turn;
 
-    // 手番を変更する
-    turn = (turn===1 ? -1 : 1);
+        // 手番を変更する
+        turn = (turn===1 ? -1 : 1);
 
-    // プレイヤー手番表示(ここに置くのは違和感)
-    display.textContent = "プレイヤーの番です";
-    game.classList.remove("event-none");
+        // プレイヤー手番表示(ここに置くのは違和感?)
+        display.textContent = "プレイヤーの番です";
+        game.classList.remove("event-none");
+    }, 1500);
 }
 
 //終了したか判定
