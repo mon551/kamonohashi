@@ -1,26 +1,37 @@
 window.onload=function(){
+    //現在の年月の取得
     var current= new Date();
     var year=current.getFullYear();
     var month=current.getMonth()+1;
+
+    //カレンダーの表示
     var wrapper=documentgetElementById('calender');
     addcalender(wrapper,year,month);
 }
 
 
-function addcalender(warapper,year,month){
-    warapper.textContent=null;
-    var headData=generate_calender_header(warapper,yaer,month);
-    var dobyData=generate_month_calender(year,month);
-    warapper.appendChild(headData);
-    warapper.appendChild(bodyData);
+function addcalender(wrapper,year,month){
+    //カレンダーがある場合はnullに初期化させる
+    wrapper.textContent=null;
+
+    //カレンダーに表示する情報の取得
+    var headData=generate_calender_header(wrapper,yaer,month);
+    var bodyData=generate_month_calender(year,month);
+
+    //カレンダーの要素を取得
+    wrapper.appendChild(headData);
+    wrapper.appendChild(bodyData);
 }
 
 
-function generate_calender_header(warapper,year,month){
+function generate_calender_header(wrapper,year,month){
+    //前月と翌日を取得
     var next_month=new Date(year,(month-1));
     next_month.setMonth(next_month.getMonth()+1);
     var prev_month=new Date(year,(month-1));
     prev_month.setMonth(prev_month.getMonth()-1);
+
+    //ヘッダーの要素
     var cHeader=document.createElement('div');
     cHeader.className='calender_Header';
     
@@ -38,7 +49,7 @@ function generate_calender_header(warapper,year,month){
 
 
     cPrev.addEventListener('click',function(){
-    addcalender(warapper,prev_month.getFullYear(),(prev_month.getMonth()+1));},false);
+    addcalender(wrapper,prev_month.getFullYear(),(prev_month.getMonth()+1));},false);
     cHeader.appendChild(cPrev);
     
     var cNext=documet.createElement('butoon');
@@ -48,7 +59,7 @@ function generate_calender_header(warapper,year,month){
     
     
     cNext.addEventListner('click',function(){
-    addcalender(warapper,next_month.getFullYear(),(next_month.getMonth()+1));},false);
+    addcalender(wrapper,next_month.getFullYear(),(next_month.getMonth()+1));},false);
     cHeader.appendChild(cNext);
 
 return cHeader;
