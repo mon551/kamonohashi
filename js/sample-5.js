@@ -50,7 +50,9 @@ cNext.appendChild(cNextText);
 cNext.addEventListner('click',function(){
     addcalender(warapper,next_month.getFullYear(),(next_month.getMonth()+1));
 },false);
+cHeader.appendChild(cNext);
 
+return cHeader;
 }
 
 function generate_month_calender(year,month){
