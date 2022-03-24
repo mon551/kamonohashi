@@ -5,18 +5,18 @@ window.onload=function(){
     var month=current.getMonth()+1;
 
     //カレンダーの表示
-    var wrapper=documentgetElementById('calender');
-    addcalender(wrapper,year,month);
+    var wrapper=document.getElementById('calendar');
+    addcalendar(wrapper,year,month);
 }
 
 
-function addcalender(wrapper,year,month){
+function addcalendar(wrapper,year,month){
     //カレンダーがある場合はnullに初期化させる
     wrapper.textContent=null;
 
     //カレンダーに表示する情報の取得
-    var headData=generate_calender_header(wrapper,yaer,month);
-    var bodyData=generate_month_calender(year,month);
+    var headData=generate_calendar_header(wrapper,yaer,month);
+    var bodyData=generate_month_calendar(year,month);
 
     //カレンダーの要素を取得
     wrapper.appendChild(headData);
@@ -24,7 +24,7 @@ function addcalender(wrapper,year,month){
 }
 
 
-function generate_calender_header(wrapper,year,month){
+function generate_calendar_header(wrapper,year,month){
     //前月と翌日を取得
     var next_month=new Date(year,(month-1));
     next_month.setMonth(next_month.getMonth()+1);
@@ -33,43 +33,43 @@ function generate_calender_header(wrapper,year,month){
 
     //ヘッダーの要素
     var cHeader=document.createElement('div');
-    cHeader.className='calender-header';
+    cHeader.className='calendar-header';
     
     //タイトルの追加
     var cTitle=document.createElement('div');
-    cTitle.className='calender-header__Title';
+    cTitle.className='calendar-header__Title';
     var cTitleText=document.createTextNode(year+'年'+month+'月');
     cTitle.appendChild(cTitleText);
     cHeader.appendChild(cTitle);
     
     //前月ボタンの追加
     var cPrev=document.createElement('button');
-    cPrev.className='calender-header__Prev';
+    cPrev.className='calendar-header__Prev';
     var cPrevText=document.createTextNode('prev');
     cPrev.appendChild(cPrevText);
 
     //前月ボタンが押された際の分岐
     cPrev.addEventListener('click',function(){
-    addcalender(wrapper,prev_month.getFullYear(),(prev_month.getMonth()+1));}
+    addcalendar(wrapper,prev_month.getFullYear(),(prev_month.getMonth()+1));}
     ,false);
     cHeader.appendChild(cPrev);
     
     //翌月ボタンの追加
     var cNext=documet.createElement('butoon');
-    cNext.className='calender-header__Next';
+    cNext.className='calendar-header__Next';
     var cNextText=document.createTextNode('next');
     cNext.appendChild(cNextText);
     
     //翌日ボタンが押された際の分岐
     cNext.addEventListner('click',function(){
-    addcalender(wrapper,next_month.getFullYear(),(next_month.getMonth()+1));}
+    addcalendar(wrapper,next_month.getFullYear(),(next_month.getMonth()+1));}
     ,false);
     cHeader.appendChild(cNext);
-
-return cHeader;
+    
+    return cHeader;
 }
 
-function generate_month_calender(year,month){
+function generate_month_calendar(year,month){
     var weekdayData=['日','月','火','水','木','金','土'];
     var calendarData=get_month_calendar(year,month);
     var i=calendarData[0]['weekday'];
