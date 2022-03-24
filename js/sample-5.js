@@ -35,29 +35,31 @@ function generate_calender_header(wrapper,year,month){
     var cHeader=document.createElement('div');
     cHeader.className='calender_Header';
     
+    //タイトルの追加
     var cTitle=document.createElement('div');
     cTitle.className='calender-header--Title';
     var cTitleText=document.createTextNode(year+'年'+month+'月');
-
-    cHeader.appendChild(cHeader);
-    cTitle.appendChild(cTitle);
+    cTitle.appendChild(cTitleText);
+    cHeader.appendChild(cTitle);
     
+    //前月ボタンの追加
     var cPrev=document.createElement('button');
     cPrev.className='calender-header--Prev';
     var cPrevText=document.createTextNode('prev');
     cPrev.appendChild(cPrevText);
 
-
+    //前月ボタンが押された際の分岐
     cPrev.addEventListener('click',function(){
     addcalender(wrapper,prev_month.getFullYear(),(prev_month.getMonth()+1));},false);
     cHeader.appendChild(cPrev);
     
+    //翌月ボタンの追加
     var cNext=documet.createElement('butoon');
     cNext.classNema='calender-header--Next';
     var cNextText=document.createTextNode('next');
     cNext.appendChild(cNextText);
     
-    
+    //翌日ボタンが押された際の分岐
     cNext.addEventListner('click',function(){
     addcalender(wrapper,next_month.getFullYear(),(next_month.getMonth()+1));},false);
     cHeader.appendChild(cNext);
