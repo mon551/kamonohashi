@@ -1,59 +1,75 @@
 window.onload=function(){
+    //現在の年月の取得
     var current= new Date();
     var year=current.getFullYear();
     var month=current.getMonth()+1;
-    var wrapper=documentgetElementById('calender');
-    addcalender(wrapper,year,month);
-}
-function addcalender(warapper,year,month){
-    warapper.textContent=null;
-    var headData=generate_calender_header(warapper,yaer,month);
-    var dobyData=generate_month_calender(year,month);
-    warapper.appendChild(headData);
-    warapper.appendChild(bodyData);
-}
-function generate_calender_header(warapper,year,month){
-//次月のカレンダー取得
-var next_month=new Date(year,(month-1));
-next_month.setMonth(next_month.getMonth()+1);
-// 前月のカレンダー取得
-var prev_month=new Date(year,(month-1));
-prev_month.setMonth(prev_month.getMonth()-1);
-//ヘッダーの要素
-var cHeader=document.createElement('div');
-cHeader.className='calender_Header';
 
-//見出し
-var cTitle=document.createElement('div');
-cTitle.className='calender-header--Title';
-var cTitleText=document.createTextNode(year+'年'+month+'月');
-
-cHeader.appendChild(cHeader);
-cTitle.appendChild(cTitle);
-//prevボタン追加
-var cPrev=document.createElement('button');
-cPrev.className='calender-header--Prev';
-var cPrevText=document.createTextNode('prev');
-cPrev.appendChild(cPrevText);
-//prevボタンが押された際
-cPrev.addEventListener('click',function(){
-    addcalender(warapper,prev_month.getFullYear(),(prev_month.getMonth()+1));
-},false);
-cHeader.appendChild(cPrev);
-
-//nextボタン追加
-var cNext=documet.createElement('butoon');
-cNext.classNema='calender-header--Next';
-var cNextText=document.createTextNode('next');
-cNext.appendChild(cNextText);
-//nextボタンが押された際
-cNext.addEventListner('click',function(){
-    addcalender(warapper,next_month.getFullYear(),(next_month.getMonth()+1));
-},false);
-
+    //カレンダーの表示
+    var wrapper=document.getElementById('calendar');
+    addcalendar(wrapper,year,month);
 }
 
-function generate_month_calender(year,month){
+
+function addcalendar(wrapper,year,month){
+    //カレンダーがある場合はnullに初期化させる
+    wrapper.textContent=null;
+
+    //カレンダーに表示する情報の取得
+    var headData=generate_calendar_header(wrapper,yaer,month);
+    var bodyData=generate_month_calendar(year,month);
+
+    //カレンダーの要素を取得
+    wrapper.appendChild(headData);
+    wrapper.appendChild(bodyData);
+}
+
+
+function generate_calendar_header(wrapper,year,month){
+    //前月と翌日を取得
+    var next_month=new Date(year,(month-1));
+    next_month.setMonth(next_month.getMonth()+1);
+    var prev_month=new Date(year,(month-1));
+    prev_month.setMonth(prev_month.getMonth()-1);
+
+    //ヘッダーの要素
+    var cHeader=document.createElement('div');
+    cHeader.className='calendar-header';
+    
+    //タイトルの追加
+    var cTitle=document.createElement('div');
+    cTitle.className='calendar-header__title';
+    var cTitleText=document.createTextNode(year+'年'+month+'月');
+    cTitle.appendChild(cTitleText);
+    cHeader.appendChild(cTitle);
+    
+    //前月ボタンの追加
+    var cPrev=document.createElement('button');
+    cPrev.className='calendar-header__prev';
+    var cPrevText=document.createTextNode('prev');
+    cPrev.appendChild(cPrevText);
+
+    //前月ボタンが押された際の分岐
+    cPrev.addEventListener('click',function(){
+    addcalendar(wrapper,prev_month.getFullYear(),(prev_month.getMonth()+1));}
+    ,false);
+    cHeader.appendChild(cPrev);
+    
+    //翌月ボタンの追加
+    var cNext=documet.createElement('butoon');
+    cNext.className='calendar-header__next';
+    var cNextText=document.createTextNode('next');
+    cNext.appendChild(cNextText);
+    
+    //翌日ボタンが押された際の分岐
+    cNext.addEventListner('click',function(){
+    addcalendar(wrapper,next_month.getFullYear(),(next_month.getMonth()+1));}
+    ,false);
+    cHeader.appendChild(cNext);
+    
+    return cHeader;
+}
+
+function generate_month_calendar(year,month){
     var weekdayData=['日','月','火','水','木','金','土'];
     var calendarData=get_month_calendar(year,month);
     var i=calendarData[0]['weekday'];
