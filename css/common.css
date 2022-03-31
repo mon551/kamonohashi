@@ -148,6 +148,7 @@ main{
 /*補足*/
 .supplement {
     margin: 0;
+    margin-bottom: 0.7rem;
     font-size: 0.8rem;
     color: rgb(107, 107, 107);
 }
@@ -173,6 +174,11 @@ main{
     border-bottom: solid thin #000;
 }
 
+/*並べる*/
+.parallel {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
 
 /*参考ページ*/
 .reference-page *{

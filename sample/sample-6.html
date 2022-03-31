@@ -21,34 +21,65 @@
     <nav class="breadcrumb">
         <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span class="cuurent-page">OSI参照モデル</span></li>
+            <li><span class="cuurent-page">OSI参照モデルとは</span></li>
         </ul>
     </nav>
 
     <div class="container">
         <main>
-            <div id="contents-title">OSI参照モデル</div>
-            <div class="sub-title">OSI参照モデルとは</div>
-            <p>OSI参照モデルとは国際標準化機構</p>
-            <div class="sub-title">階層ごとの役割</div>
-            <p class="bottom-line">物理層(第１層)</p>
-            
-            <p class="bottom-line">データリンク層(第２層)</p>
+            <div id="contents-title">OSI参照モデルとは</div>
+            <div class="sub-title">OSI参照モデルの概要</div>
+            <div class="description">
+                <p><span class="keyword">OSI参照モデル</span>とは<span class="emphasis">国際標準化機構(ISO)</span>が異機種間の通信を実現するためのネットワーク標準規格として策定されたもの</p>
+                <p class="supplement">OSI(Open Systems Interconnection)<br>ISO(International Organization for Standardization)</p>
+                <p>通信機能を７つの階層に分けて、各層のプロトコルに従って通信を行なう。<br>上から</p>
+                <ul class="parallel">
+                    <li>アプリケーション層</li>
+                    <li>プレゼンテーション層</li>
+                    <li>セッション層</li>
+                    <li>トランスポート層</li>
+                    <li>ネットワーク層</li>
+                    <li>データリンク層</li>
+                    <li>物理層</li>
+                </ul>
+                <p>なお<a href="sample-2.html" class="keyword">TCP/IP</a>の急速的な普及により<span class="keyword">OSI参照モデル</span>を使用したOSI準拠製品は普及しなかった。</p>
+                <p>ただ、現在でもネットワーク通信の基本的な考え方として使用されていて、理解しておいて損はない。</p>
+                <p class="bottom-line">以降は各階層の役割の解説です。</p>
+                <p class="supplement">第1層、第2層...ではなくレイヤ１、レイヤ２とも言う</p>
+            </div>
+            <!--第１層-->
+            <p class="sub-title">物理層(第１層)</p>
+            <div class="description">
+                <p>コンピュータ上のデータ（ビット列）を物理的な電気信号に変換し、相手に届ける機能・役割</p>
+                <p>イメージとしてはこんな感じ↓</p>
+                <img src="../img/sample-6_1.svg">
+                <p>また、ハードウェアのコネクタ形状やピン数、ケーブルの種類など物理的な要件を定義している。</p>
+            </div>
 
-            <p class="bottom-line">ネットワーク層(第３層)</p>
+            <!--第２層-->
+            <p class="sub-title">データリンク層(第２層)</p>
+            <div class="description">
+                
+            </div>
 
-            <p class="bottom-line">トランスポート(第４層)</p>
+            <p class="sub-title">ネットワーク層(第３層)</p>
 
-            <p class="bottom-line">セッション層(第５層)</p>
+            <p class="sub-title">トランスポート(第４層)</p>
 
-            <p class="bottom-line">プレゼンテーション層(第６層)</p>
+            <p class="sub-title">セッション層(第５層)</p>
 
-            <p class="bottom-line">アプリケーション層(第７層)</p>
+            <p class="sub-title">プレゼンテーション層(第６層)</p>
+
+            <p class="sub-title">アプリケーション層(第７層)</p>
 
             <!--参考ページのURL-->
             <p class="bottom-line">以下参考ページ</p>
             <ul class="reference-page">
                 <li>https://www.itmanage.co.jp/column/osi-reference-model/</li>
+                <li>https://www.seraku.co.jp/tectec-note/industry/osi-reference-model/</li>
+                <li>https://www.seraku.co.jp/tectec-note/industry/physical-layer/</li>
+                <li>https://www.infraexpert.com/study/networking3.html</li>
+                <li>https://it-biz.online/it-skills/osi-reference-model/</li>
             </ul>
         </main>
         
