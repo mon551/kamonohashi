@@ -1,8 +1,10 @@
 const week=["日","月","火","水","木","金","土"];
 const today=new Date();
 
+//取得した年月の一日目で作成する
 var showDate = new Date(today.getFullYear(), today.getMonth(),1);
 
+//初期表示
 window.onload=function(){
     showProcess(today,calendar);
 };
@@ -16,6 +18,7 @@ function next(){
     showProcess(showDate);
 }
 
+//カレンダーを表示する関数
 function showProcess(date){
     var year=date.getFullYear();
     var month=date.getMonth();
@@ -27,7 +30,7 @@ function showProcess(date){
 function createProcess(year,month){
     var calendar = "<table><tr class ='dayOfWeek'>";
     for(var i=0; i<week.length; i++){
-        calendar+="<th>"+week+"</th>";
+        calendar+="<th>"+week[i]+"</th>";
     }
     calendar+="</tr>";
 
@@ -37,10 +40,12 @@ function createProcess(year,month){
     var lastMonthEndDate = new Date(year, month,0).getDate();
     var row = Math.ceil((startDayOfWeek+endDate)/week.length);
 
+    //1行ずつ(外側)のforループ
     for(var i=0; i<row;i++){
         calendar+="<tr>";
-
+        //1日ずつ(内側)のforループ 
         for(var j=0; j<week.length;j++){
+            //先月までの日付を決定
             if(i==0 && j<startDayOfWeek){
                 calendar+="<td class='disabled'>"+(lastMonthEndDate-startDayOfWeek+j+1)+"</td>";
             }else if(count>=endDate){
@@ -51,7 +56,7 @@ function createProcess(year,month){
                 if(year==today.getFullYear() && (month==today.getMonth()) && count==today.getDate()){
                     calendar+="<td class ='today'>"+count+"</td>";
                 }else{
-                    caledar+="<td>"+count + "</td>";
+                    calendar+="<td>"+count + "</td>";
                 }
             }
         }
