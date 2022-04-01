@@ -28,7 +28,7 @@ function gameStart(value) {
         firstSecond.classList.add("is-hidden");
     });
     game.classList.remove("is-hidden");
-    display.textContent = "ゲームスタート";
+    display.innerHTML = "<p>ゲームスタート</p>";
 
     if(value === 1) com();
     player();
@@ -71,7 +71,7 @@ function player() {
 // コンピュータの応手
 function com() {
     // コンピュータ手番表示
-    display.textContent = "コンピュータの番です";
+    display.innerHTML = "<p>コンピュータの番です</p>";
     game.classList.add("event-none");
 
     // 0~9のランダム生成
@@ -96,7 +96,7 @@ function com() {
         turn = (turn===1 ? -1 : 1);
 
         // プレイヤー手番表示(ここに置くのは違和感?)
-        display.textContent = "プレイヤーの番です";
+        display.innerHTML = "<p>プレイヤーの番です</p>";
         game.classList.remove("event-none");
     }, 1500);
 }
@@ -146,11 +146,11 @@ function displayResult(winner) {
         result = "引き分けです。";
     } else {
         const win = (winner===1 ? "〇" : "✕");
-        result = `${win}が勝ちました。`;
+        result = `<p>${win}が勝ちました。</p>`;
     }
     
     // 結果を表示する
-    display.textContent = result;
+    display.innerHTML = result;
 }
 
 // リロード(もう一度遊ぶ)
