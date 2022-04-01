@@ -21,18 +21,122 @@
     <nav class="breadcrumb">
         <ul class="breadcrumb-items">
             <li><a href="../index.html">HOME</a></li>
-            <li><span class="cuurent-page">入力された文字に応じてテキストを変更</span></li>
+            <li><span class="cuurent-page">OSI参照モデルとは</span></li>
         </ul>
     </nav>
 
     <div class="container">
         <main>
-            <div id="contents-title">
-                入力された文字に応じてテキストを変更
+            <div id="contents-title">OSI参照モデルとは</div>
+            <div class="sub-title">OSI参照モデルの概要</div>
+            <div class="description">
+                <p><span class="keyword">OSI参照モデル</span>とは<span class="emphasis">国際標準化機構(ISO)</span>が異機種間の通信を実現するためのネットワーク標準規格として策定された<span class="emphasis">OSIの通信モデル</span></p>
+                <p class="supplement">OSI(Open Systems Interconnection)<br>ISO(International Organization for Standardization)</p>
+                <p>通信機能を７つの階層に分けて、各層のプロトコルに従って通信を行なう。<br>上から</p>
+                <ul class="parallel">
+                    <li>アプリケーション層</li>
+                    <li>プレゼンテーション層</li>
+                    <li>セッション層</li>
+                    <li>トランスポート層</li>
+                    <li>ネットワーク層</li>
+                    <li>データリンク層</li>
+                    <li>物理層</li>
+                </ul>
+                <p>なお<a href="sample-2.html" class="keyword">TCP/IP</a>の急速的な普及により<span class="keyword">OSI参照モデル</span>を使用したOSI準拠製品は普及しなかった。</p>
+                <p>ただ、現在でもネットワーク通信の基本的な考え方として、理解しておくことに損はない。</p>
+                <p class="bottom-line">以降は各階層の役割の解説です。</p>
+                <p class="supplement">※第1層、第2層...ではなくレイヤ１、レイヤ２とも言う</p>
             </div>
-            
-            <textarea></textarea>
-            <p id="log"></p>
+            <!--第１層-->
+            <p class="sub-title">物理層(第１層)</p>
+            <div class="description">
+                <p>コンピュータ上のデータ（ビット列）を物理的な電気信号に変換し、相手に届ける機能・役割</p>
+                <p>イメージとしてはこんな感じ↓</p>
+                <img src="../img/sample-6_1.svg">
+                <p>また、ハードウェアのコネクタ形状やピン数、ケーブルの種類など物理的な要件を定義している。</p>
+            </div>
+
+            <!--第２層-->
+            <p class="sub-title">データリンク層(第２層)</p>
+            <div class="description">
+                <p>簡単に言えば、LANケーブルなどで直接接続された、<span class="emphasis">隣接する機器間の通信を可能</span>にする役割を持っている。</p>
+                <p>データを転送するための機能や手順を提供し、データ転送時に発生するエラーの検出方法や、その誤りを訂正する手法などを提供している。</p>
+                <p>代表的なものは<span class="keyword">MACアドレス</span>を使用した<span class="keyword">イーサネット接続</span>がある。</p>
+                <p class="supplement">※イーサネットは有線LANの規格</p>
+                <p>データリンク層で使用されるプロトコルは<span class="keyword">イーサネット</span>の他に<span class="keyword">無線LAN</span>などがある。</p>
+            </div>
+
+            <!--第３層-->
+            <p class="sub-title">ネットワーク層(第３層)</p>
+            <div class="description">
+                <p>複数のネットワークをつないで相互にやり取りする機能を実現する役割</p>
+                <p>簡単に言えばデータがルータなどを辿っていき、<span class="emphasis">最終的な目的地まで送り届ける</span>役割を担っている。</p>
+                <p>ネットワーク層で使用されるプロトコルは<span class="keyword">IP(インターネットプロトコル)</span>などがある。</p>
+                <p>ネットワーク層で動作する機器として、<span class="keyword">ルータ</span>やL3スイッチがある。</p>
+                <p class="bottom-line">簡単にまとめると</p>
+                <p>ネットワーク層の<span class="emphasis">IPを用いて最終的な宛先を判別</span>し、データリンク層の<span class="emphasis">MACアドレスを用いて</span>データ→ルータA→ルータBなどの<span class="emphasis">中継地を判別</span>していく。</p>
+            </div>
+
+            <!--第４層-->
+            <p class="sub-title">トランスポート(第４層)</p>
+            <div class="description">
+                <p><span class="keyword">トランスポート層</span>では通信の信頼性を担保している。</p>
+                <p>つまり、<span class="emphasis">データが適切に届いているかを確認</span>する役割・機能を持っている。</p>
+                <p>もしデータ転送時に何らかのエラーが発生すれば再送する役割を提供している。</p>
+                <p class="bottom-line">さらに、もう一つ機能があり</p>
+                <p>アプリケーションごとに決められた<span class="keyword">ポート番号</span>を参照し、適切なアプリケーションに送り届ける。</p>
+                <p>つまり、<span class="keyword">ネットワーク層</span>以下でどのコンピュータにデータを送るか特定し、<br>ここでは特定したコンピュータの<span class="emphasis">どのアプリケーションにデータを届けるかを判別する。</span></p>
+            </div>
+
+            <!--第５層-->
+            <p class="sub-title">セッション層(第５層)</p>
+            <div class="description">
+                <p>セッションとは<span class="emphasis">通信の開始から終了までを管理する一つの単位</span>のこと</p>
+                <p>つまり、<span class="keyword">セッション層</span>とは<span class="emphasis">通信の確立、維持、終了までの手順を規定している。</span></p>
+                <p>現在主流となっているプロトコルは「<span class="keyword">TLS</span>」<br>「<span class="keyword">TLS</span>」は「<span class="keyword">SSL</span>」の次世代に定義されたセキュリティプロトコル</p>
+                <p class="supplement">※SSL3.0にアップデートしてからは通信の方式は殆ど変わらないので、SSL/TLSと表記されるとこもある。</p>
+            </div>
+
+            <!--第６層-->
+            <p class="sub-title">プレゼンテーション層(第６層)</p>
+            <div class="description">
+                <p><span class="keyword">プレゼンテーション層</span>ではデータの表現形式を決定している。</p>
+                <p>文字コードや画像フォーマットの取り決めをしている。</p>
+                <p>つまり<span class="emphasis">データの表現形式の差異を吸収し、適切な形式でアプリケーション層へ渡す機能を持っている。</span></p>
+                <p>データの暗号化や圧縮、ファイル形式やデータ形式、文字コードの<span class="emphasis">定義や形式間の変換の役割</span>を果たす</p>
+                <p>文字化けするとしたらこの層で起きる。</p>
+            </div>
+
+            <!--第７層-->
+            <p class="sub-title">アプリケーション層(第７層)</p>
+            <div class="description">
+                <p><span class="keyword">アプリケーション層</span>は、利用する<span class="emphasis">ソフトウェアの中でネットワーク通信に関わる部分の役割</span></p>
+                <p>つまり、<span class="emphasis">利用者が操作するアプリケーションが提供する機能についての仕様や通信手順などを定める役割</span>を持っている。</p>
+                <p>ざっくり言うと、電子メールを利用したり、webページを閲覧する際に、アプリケーション層がコンピュータとユーザとの橋渡しをしてくれている。</p>
+                <p>アプリケーション層で使用される主なプロトコルには「<span class="keyword">HTTP</span>」や「<span class="keyword">SMTP</span>」などがある。</p>
+            </div>
+
+            <!--まとめ-->
+            <p class="sub-title">まとめ</p>
+            <div class="description">
+                <p><span class="emphasis">OSI(Open Systems Interconnection)：開放型システム間相互接続</span></p>
+                <p>コンピュータネットワークで利用されている多くの<span class="keyword">プロトコル</span>を、それぞれの役割に分類し明確化するためのモデル</p>
+                <p>現在は、OSI準拠製品はほとんどないがネットワークの基礎知識として理解することはとても大事</p>
+            </div>
+
+            <!--参考ページのURL-->
+            <p class="bottom-line">以下参考ページ</p>
+            <ul class="reference-page">
+                <li>https://www.itmanage.co.jp/column/osi-reference-model/</li>
+                <li>https://www.seraku.co.jp/tectec-note/industry/osi-reference-model/</li>
+                <li>https://www.seraku.co.jp/tectec-note/industry/physical-layer/</li>
+                <li>https://www.infraexpert.com/study/networking3.html</li>
+                <li>https://medium-company.com/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%AF%E5%B1%A4/</li>
+                <li>https://it-biz.online/it-skills/osi-reference-model/</li>
+                <li>https://e-words.jp/w/%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4.html</li>
+                <li>https://medium-company.com/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4/</li>
+                <li>https://ja.wikipedia.org/wiki/OSI%E5%8F%82%E7%85%A7%E3%83%A2%E3%83%87%E3%83%AB</li>
+            </ul>
         </main>
         
         <aside id="sideber">
