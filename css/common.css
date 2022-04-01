@@ -136,7 +136,7 @@ main{
     border-left: solid 15px rgb(155, 155, 155);
     box-shadow: 3px 2px 1px 1px rgb(100, 100, 100);
     padding-left: 1rem;
-    margin-top: 2rem;
+    margin: 2.5rem 0 1.5rem;
 }
 
 /*説明の部分*/
@@ -163,6 +163,7 @@ main{
     font-size: 1.18rem;
     font-weight: bold;
     text-shadow: 1px 1px 1px rgb(194, 194, 194);
+    background:linear-gradient(transparent 70%, #FFFF00 0%);
 }
 /*下線強調*/
 .bottom-line{
