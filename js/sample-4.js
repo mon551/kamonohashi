@@ -74,9 +74,12 @@ function player() {
 
 // コンピュータの応手
 async function com() {
+
     // コンピュータ手番表示
     display.innerHTML = "<p>コンピュータの番です</p>";
     game.classList.add("event-none");
+
+
 
     // 0~9のランダム生成
     let random = Math.floor(Math.random() * field.length);
@@ -87,9 +90,6 @@ async function com() {
 
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
-    
-    // 一時停止
-    //await sleep(1500);
 
     // 画像を表示する
     table[random].appendChild(newImg);
@@ -107,6 +107,7 @@ async function com() {
 
 //終了したか判定
 function isFinished() {
+    console.log("入った");
     let winner = 0;
 
     // 〇か✕が揃ったか検索
@@ -147,7 +148,7 @@ function displayResult(winner) {
 
     // リザルトコメントを代入する
     if(winner === 0){
-        result = "引き分けです。";
+        result = "<p>引き分けです。</p>";
     } else {
         const win = (winner===1 ? "〇" : "✕");
         result = `<p>${win}が勝ちました。</p>`;
