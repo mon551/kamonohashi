@@ -1,5 +1,8 @@
-textarea {
-    resize: none;
-    width: 90%;
-    height: 15rem;
+p {
+    margin-bottom: 0.7rem;
+}
+
+img {
+    width: 100%;
+    margin: 1.2rem 0;
 }

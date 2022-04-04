@@ -22,10 +22,13 @@ table {
     margin: 0 auto;
     padding: 0.5rem 0;
     text-align: center;
-    font-size: 2rem;
     color: rgb(73, 73, 73);
     border-radius: 10px;
     border: solid rgb(190, 190, 190);
+}
+
+#display p {
+    font-size: 2rem;
 }
 
 /*フィールド*/
@@ -66,7 +69,10 @@ p {
 
 @media screen and (max-width: 600px){
     #display {
-        font-size: 1.6rem;
         height: 4rem;
     }
+
+    #display p {
+        font-size: 1.5rem;
+    }    
 }
