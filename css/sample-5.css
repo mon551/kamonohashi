@@ -1,0 +1,48 @@
+.wrapper{
+    font-family:'Noto Sans JP';
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin: 0 auto;
+}
+#wrapper-header{
+    font-size: 24px;
+    text-align:center;
+}
+#next-prev-button{
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+    border:rgb(26, 25, 25);
+}
+#prev{
+    float: left;
+}
+#next{
+    float: right;
+}
+#prev::before{
+    content: '<';
+}
+#next:after{ 
+    content: '>';
+}
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    border: solid;
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    border: solid;
+}
