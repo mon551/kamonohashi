@@ -62,11 +62,7 @@ function player() {
                 isFinished();
 
                 // コンピュータの応手
-                if(winFlg){
-                    com();
-                    // 終了したか確認
-                    isFinished();
-                } 
+                if(winFlg) com();
             }
         }
     }
@@ -74,6 +70,7 @@ function player() {
 
 // コンピュータの応手
 async function com() {
+
     // コンピュータ手番表示
     display.innerHTML = "<p>コンピュータの番です</p>";
     game.classList.add("event-none");
@@ -87,26 +84,30 @@ async function com() {
 
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
-    
-    // 一時停止
-    //await sleep(1500);
 
-    // 画像を表示する
-    table[random].appendChild(newImg);
+    setTimeout(() => {
+        // 画像を表示する
+        table[random].appendChild(newImg);
 
-    // 置かれた場所にマークする
-    field[random] = turn;
+        // 置かれた場所にマークする
+        field[random] = turn;
 
-    // 手番を変更する
-    turn = (turn===1 ? -1 : 1);
+        // 手番を変更する
+        turn = (turn===1 ? -1 : 1);
 
-    // プレイヤー手番表示(ここに置くのは違和感)
-    display.innerHTML = "<p>プレイヤーの番です</p>";
-    game.classList.remove("event-none");
+        // プレイヤー手番表示(ここに置くのは違和感?)
+        display.innerHTML = "<p>プレイヤーの番です</p>";
+        game.classList.remove("event-none");
+
+        // 終了したか確認
+        isFinished();
+
+    }, 1500);
 }
 
 //終了したか判定
 function isFinished() {
+    
     let winner = 0;
 
     // 〇か✕が揃ったか検索
@@ -147,7 +148,7 @@ function displayResult(winner) {
 
     // リザルトコメントを代入する
     if(winner === 0){
-        result = "引き分けです。";
+        result = "<p>引き分けです。</p>";
     } else {
         const win = (winner===1 ? "〇" : "✕");
         result = `<p>${win}が勝ちました。</p>`;
@@ -178,3 +179,4 @@ function getImgSrc(turn){
 
     return newImg;
 }
+
