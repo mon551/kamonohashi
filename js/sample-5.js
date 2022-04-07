@@ -1,4 +1,4 @@
-const week=["日","月","火","水","木","金","土"];
+const week=["SUN","MON","TUE","WED","THU","FRI","SAT"];
 const today=new Date();
 
 //取得した年月の一日目で作成する
@@ -22,7 +22,7 @@ function next(){
 function showProcess(date){
     var year=date.getFullYear();
     var month=date.getMonth();
-    document.querySelector('#warapper-header').innerHTML=year+"年"+(month+1)+"月";
+    document.querySelector('#wrapper-header').innerHTML=year+"年"+(month+1)+"月";
     var calendar=createProcess(year,month);
     document.querySelector('#calendar').innerHTML=calendar;
 }
@@ -49,15 +49,20 @@ function createProcess(year,month){
             if(i==0 && j<startDayOfWeek){
                 calendar+="<td class='disabled'>"+(lastMonthEndDate-startDayOfWeek+j+1)+"</td>";
             }else if(count>=endDate){
+                //翌月の日付を作成
                 count++;
                 calendar+="<td class ='disabled'>"+(count-endDate)+"</td>";
             }else{
+                //指定した月の日付を作成
                 count++;
-                if(year==today.getFullYear() && (month==today.getMonth()) && count==today.getDate()){
+                if(year==today.getFullYear() && month == today.getMonth() && count == today.getDate()){
+                    //取得した月日と同じ日にtodayタグを設定
                     calendar+="<td class ='today'>"+count+"</td>";
                 }else{
-                    calendar+="<td>"+count + "</td>";
+                    calendar+="<td>" + count + "</td>";
                 }
+                
+                
             }
         }
         calendar+="</tr>";

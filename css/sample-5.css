@@ -1,0 +1,71 @@
+.wrapper{
+    font-family:'Noto Sans JP';
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin: 0 auto;
+}
+#wrapper-header{
+    font-size: 24px;
+    text-align:center;
+}
+#next-prev-button{
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+    border:rgb(16, 16, 16);
+}
+#prev{
+    float: left;
+}
+#next{
+    float: right;
+}
+#prev::before{
+    content: '<';
+}
+#next:after{ 
+    content: '>';
+}
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    border: solid;
+    border-radius: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.disabled{
+    opacity: 0.5;
+}
+.today{
+    background-color: red;
+}
+td,th{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: solid;
+    border-color: rgb(130, 130, 128);
+}
+th{
+    background-color: #B78D4A;
+    font-weight: bold;
+    width: calc(100% / 7);
+}
+th:first-child,td:first-child {
+    color: red;
+}
+th:last-child,td:last-child {
+    color: blue;
+}
