@@ -62,11 +62,7 @@ function player() {
                 isFinished();
 
                 // コンピュータの応手
-                if(winFlg){
-                    com();
-                    // 終了したか確認
-                    isFinished();
-                } 
+                if(winFlg) com();
             }
         }
     }
@@ -79,8 +75,6 @@ async function com() {
     display.innerHTML = "<p>コンピュータの番です</p>";
     game.classList.add("event-none");
 
-
-
     // 0~9のランダム生成
     let random = Math.floor(Math.random() * field.length);
     
@@ -91,23 +85,29 @@ async function com() {
     // 表示する画像を取得
     const newImg = getImgSrc(turn);
 
-    // 画像を表示する
-    table[random].appendChild(newImg);
+    setTimeout(() => {
+        // 画像を表示する
+        table[random].appendChild(newImg);
 
-    // 置かれた場所にマークする
-    field[random] = turn;
+        // 置かれた場所にマークする
+        field[random] = turn;
 
-    // 手番を変更する
-    turn = (turn===1 ? -1 : 1);
+        // 手番を変更する
+        turn = (turn===1 ? -1 : 1);
 
-    // プレイヤー手番表示(ここに置くのは違和感)
-    display.innerHTML = "<p>プレイヤーの番です</p>";
-    game.classList.remove("event-none");
+        // プレイヤー手番表示(ここに置くのは違和感?)
+        display.innerHTML = "<p>プレイヤーの番です</p>";
+        game.classList.remove("event-none");
+
+        // 終了したか確認
+        isFinished();
+
+    }, 1500);
 }
 
 //終了したか判定
 function isFinished() {
-    console.log("入った");
+    
     let winner = 0;
 
     // 〇か✕が揃ったか検索
@@ -179,3 +179,4 @@ function getImgSrc(turn){
 
     return newImg;
 }
+
