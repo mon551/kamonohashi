@@ -20,7 +20,7 @@
     font-size: 1rem;
     padding: 0.5rem 2rem;
     margin: 1rem 0;
-    border:rgb(26, 25, 25);
+    border:rgb(16, 16, 16);
 }
 #prev{
     float: left;
@@ -40,9 +40,32 @@
 }
 table {
     border: solid;
+    border-radius: 10px;
     width: 100%;
     border-collapse: collapse;
 }
-td{
+
+.disabled{
+    opacity: 0.5;
+}
+.today{
+    background-color: red;
+}
+td,th{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: solid;
+    border-color: rgb(130, 130, 128);
+}
+th{
+    background-color: #B78D4A;
+    font-weight: bold;
+    width: calc(100% / 7);
+}
+th:first-child,td:first-child {
+    color: red;
+}
+th:last-child,td:last-child {
+    color: blue;
 }

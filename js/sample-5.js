@@ -1,4 +1,4 @@
-const week=["日","月","火","水","木","金","土"];
+const week=["SUN","MON","TUE","WED","THU","FRI","SAT"];
 const today=new Date();
 
 //取得した年月の一日目で作成する
