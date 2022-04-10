@@ -199,6 +199,18 @@ main{
     margin: 0.2rem 0.5rem;
 }
 
+/*ソース*/
+#source {
+    margin: 2rem 0 1rem;
+}
+
+#source *{
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    padding-top: 0.1rem;
+    display: block;
+}
+
 /*-----------サイドバー関連(side)----------------*/
 aside {
     width: calc(100% - 75%);
