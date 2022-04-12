@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> 
+    <title>トランプゲーム「戦争」の作成</title>
+    <!--共通のパーツ-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/common.js" defer></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <!--個別ファイル読み込み-->
+    <link rel="stylesheet" href="../css/sample-7.css">
+    <script src="../js/sample-7.js" defer></script>
+</head>
+
+<body>
+    <!--ヘッダー読み込み-->
+    <header id="header"></header>
+
+    <!--パンくずリスト-->
+    <nav class="breadcrumb">
+        <ul class="breadcrumb-items">
+            <li><a href="../index.html">HOME</a></li>
+            <li><span class="cuurent-page">トランプゲーム「戦争」の作成</span></li>
+        </ul>
+    </nav>
+
+    <!--コンテナ-->
+    <div class="container">
+        
+        <main>
+            <div id="contents-title">トランプゲーム「戦争」の作成</div>
+
+            <div id="display">
+                <div id="com-area" class="is-hidden">
+                    <div class="com-hand"></div>
+                    <div class="com-hand"></div>
+                    <div class="com-hand"></div>
+                    <div class="com-hand"></div>
+                    <div class="com-hand"></div>
+                </div>
+                <div id="card-area" class="is-hidden"></div>
+                <div id="player-area" class="is-hidden">
+                    <div class="player-hand"></div>
+                    <div class="player-hand"></div>
+                    <div class="player-hand"></div>
+                    <div class="player-hand"></div>
+                    <div class="player-hand"></div>
+                </div>
+            </div>
+
+
+
+            
+            <div id="comment">
+                <p class="comment-title">まとめ</p>
+                <p><!--ここにコメント--></p>
+            </div>
+
+            <!--参考ページ-->
+            <p class="bottom-line">以下参考ページ</p>
+            <ul class="reference-page">
+                <li>ここにリンク(無かったら消す)</li>
+            </ul>
+            <!--ソースの表示-->
+            <div id="source">
+                <p>↓ソースはこちら↓</p>
+                <!--場所を指定する-->
+                <a href="https://github.com/mon551/kamonohashi/blob/main/sample/sample-.html" target="_brank" rel="noopener noreferrer">HTMLソース</a>
+                <a href="https://github.com/mon551/kamonohashi/blob/main/js/sample-.js" target="_brank" rel="noopener noreferrer">javascriptソース</a>
+            </div>
+        </main>
+        
+        <aside id="sideber">
+            <!--コンテンツを検索する-->
+            <div id="search-contents">
+                コンテンツを検索
+            </div>
+            
+            <!--更新情報-->
+            <div id="updated-info"></div>
+        </aside>
+    </div>
+
+    <!--フッター-->
+    <footer id="footer"></footer>
+
+</body>
+
+</html>
