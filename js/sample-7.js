@@ -3,6 +3,10 @@ let field = document.querySelector("#card-area");
 let comHand = document.querySelectorAll(".com-hand");
 let playerHand = document.querySelectorAll(".player-hand");
 
+const comArea = document.querySelector(".play-com-card");
+const playerArea = document.querySelector(".play-player-card");
+
+
 // トランプの配列を作る
 let cards = Array(5);
 for(let i=0; i<=4; i++) {
@@ -30,7 +34,7 @@ window.onload = () => {
     // プレイヤーの手札を生成
     playerHand.forEach(el => {
         const img = getImgSrc();
-
+        
         el.innerHTML = `${img}`;
         el.addEventListener('click', function(){playCard(img, el);}, false);
     });
@@ -38,36 +42,49 @@ window.onload = () => {
 
 // カードを出す
 function playCard(img, el) {
-    const comArea = document.querySelector(".play-com-card");
-    const playerArea = document.querySelector(".play-player-card");
-
+    console.log(el);
+    console.log(img);
     playerArea.innerHTML = `${img}`;
 
     const newImg = getImgSrc();
+    
 
+    
     el.innerHTML = newImg;
 }
 
+// カードをすべて出したか判定
+// メソッド名変更
 
 
 // 画像を取得
 function getImgSrc() {
-    let suit, num;
+    let img, flg;
 
-    do{
-        const flg = cards.every(function(val){
-            return true;
-        });
+    
+    // flg が false の場合まだカードを出し切っていない
+    //if(flg === false){
+        let suit, num;
 
-        // ランダム作成(記号)
-        suit = Math.floor(Math.random() * 4 + 1);
-        // ランダム作成(数字)
-        num = Math.floor(Math.random() * 12 + 1);
+        
 
-    } while(cards[suit][num] == true)
+        do {
+            // ランダムでトランプ番号作成
+            suit = Math.floor(Math.random() * 4 + 1);
+            num = Math.floor(Math.random() * 12 + 1);
+        } 
+        while(cards[suit][num] == true);
 
-    // 使用済はtureにする
-    cards[suit][num] = true;
+        // 使用済はtureにする
+        cards[suit][num] = true;
 
-    return `<img src="../img/cards/${suit}-${num}.png">`;
+        img = `<img src=\"../img/cards/${suit}-${num}.png\">`;
+    /*
+    }
+    else {
+        // 裏面
+        img = "<img src=\"../img/cards/card-back.png\">";
+    }
+    */
+    return img;
 }
