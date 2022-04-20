@@ -1,0 +1,42 @@
+#display {
+    height: 40rem;  /*一時的*/
+    width: 100%;
+}
+
+#card-area {
+    height: calc(100% - 60%);
+    text-align: center;
+}
+                            
+#com-area, #player-area{
+    height: calc(100% - 70%);
+    text-align: center;
+    border: solid;
+}
+
+#com-area *, #player-area * {
+    display: inline-block;
+}
+
+.com-hand, .player-hand {
+    width: calc(100% / 6);
+    height: 100%;
+}
+
+.com-hand img, .player-hand img {
+    width: auto;
+    height: 100%;
+}
+
+.play-com-card, .play-player-card {
+    height: 100%;
+    width: 49%;
+    display: inline-block;
+    border: solid red;
+}
+
+.play-com-card img, .play-player-card img {
+    width: auto;
+    height: 100%;
+    border: solid #000;
+}
