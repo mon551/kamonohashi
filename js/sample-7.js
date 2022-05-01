@@ -27,12 +27,16 @@ for(let i=0; i<5; i++){
 // 今回ジョーカーは使わない
 arraySuit[0] = true;
 
+
+
 // 画面が読み込まれたら
 window.onload = () => {
     // comの手札を生成
     for(let i=0; i<5; i++){
         // comの手札を置く場所を取得
         const comArea = document.querySelector("#com-area");
+
+        
 
         const newImg = document.createElement("img");
 
@@ -106,20 +110,22 @@ function getImgObj() {
         // 数字を確定する
         let num;
         do {
-            num = Math.floor(Math.random() * 12 + 1);
+            num = Math.floor(Math.random() * 13 + 1);
         }
-        while(cards[suit][num] == true);
+        while(cards[suit][num-1] == true);
+
+        // 使用済カードはtureにする
+        cards[suit][num-1] = true;
 
         // それぞれの記号のカードをすべて使いきったか調べる
         // 使い切ったら arraySuit に tureを代入
         for(let i=0; i<arraySuit.length; i++){
-            arraySuit[i] = cards[i].every(function(val){
-                return val === true;
-            });
+            if(arraySuit[i] !== true){
+                arraySuit[i] = cards[i].every(function(val){
+                    return val === true;
+                });
+            }
         }
-        
-        // 使用済カードはtureにする
-        cards[suit][num] = true;
 
         newImg.src = `../img/cards/${suit}-${num}.png`;
     }
