@@ -28,15 +28,26 @@ for(let i=0; i<5; i++){
 arraySuit[0] = true;
 
 
-
 // 画面が読み込まれたら
 window.onload = () => {
-    // comの手札を生成
+    // 手札の配列
+    comHand = Array(5);
+    playerHand = Array(5);
+
+    // comの初期手札を生成
     for(let i=0; i<5; i++){
+
+        // 画像の番号を二次元配列で取得
+        comHand[i] = getCardArrayIndex();
+
+        // divタグ生成
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("com-hand");
+
+        //displayImg(comHand[i], newDiv);
+
         // comの手札を置く場所を取得
         const comArea = document.querySelector("#com-area");
-
-        
 
         const newImg = document.createElement("img");
 
@@ -46,31 +57,46 @@ window.onload = () => {
         comArea.appendChild(newImg);
     }
 
-    // プレイヤーの手札を生成
+    // プレイヤーの初期手札を生成
     for(let i=0; i<5; i++){
+
+        // 表示する画像の番号を二次元配列で取得
+        comHand[i] = getCardArrayIndex();
+
+        // プレイヤーの手札を置く場所を取得 
+        const playerArea = document.querySelector("#player-area");
+
+        // 画像の番号を二次元配列で取得
+        playerHand[i] = getCardArrayIndex();
+
+        
+
+        /*
         // プレイヤーの手札を置く場所を取得 
         const playerArea = document.querySelector("#player-area");
 
         // divタグ生成
         const newDiv = document.createElement("div");
         newDiv.classList.add("player-hand");
+        
         // divタグ追加し、取得
         playerArea.appendChild(newDiv);
         const playerHand = playerArea.lastChild;
 
         // 画像を取得し div タグの下に追加する
         playerHand.appendChild(getImgObj() );
+        */
     }
 
     // プレイヤーの手札を取得し、クリックイベントを付与する
-    const playerHand = document.querySelectorAll(".player-hand");
-    playerHand.forEach(el => {
+    const element = document.querySelectorAll(".player-hand");
+    element.forEach(el => {
         el.addEventListener('click', function(){playCard(el); }, false )
     });
 }
 
 // カードを出す
-function playCard(el) {
+function playCard(card) {
     // カードを出す場所を取得
     const playComArea = document.querySelector(".play-com-card");
     const playPlayerArea = document.querySelector(".play-player-card");
@@ -93,8 +119,55 @@ function playCard(el) {
     el.appendChild(getImgObj() );
 }
 
-// 画像を取得
-function getImgObj() {
+// 画像のindexを取得
+function getCardArrayIndex() {
+    let suit, num;
+
+    // カードが残っているか判定
+    if( arraySuit.some(val => val === false) ){
+        // 記号を確定する
+        do {
+            suit = Math.floor(Math.random() * 4 + 1);
+        }
+        while(arraySuit[suit] == true);
+
+        // 数字を確定する
+        do {
+            num = Math.floor(Math.random() * 13 + 1);
+        }
+        while(cards[suit][num-1] == true);
+
+        // 使用済カードはtureにする
+        cards[suit][num-1] = true;
+
+        // それぞれの記号のカードをすべて使いきったか調べる
+        // 使い切ったら arraySuit に tureを代入
+        for(let i=0; i<arraySuit.length; i++){
+            if(arraySuit[i] !== true){
+                arraySuit[i] = cards[i].every(function(val){
+                    return val === true;
+                });
+            }
+        }
+    }
+    else {
+        suit = 0;
+        num  = 0;
+    }
+
+    return [suit, num];
+}
+
+function displayCard(cardArray, cardLoc) {
+    
+
+
+}
+
+
+
+// 画像を表示
+function getImgObj() {/*
     // img要素を作成
     const newImg = document.createElement("img");
 
@@ -134,5 +207,5 @@ function getImgObj() {
         newImg.src = "../img/cards/card-back.png";
     }
 
-    return newImg;
+    return newImg;*/
 }
