@@ -28,6 +28,9 @@ arraySuit[0] = true;
 let comHand = new Array(5);
 let playerHand = new Array(5);
 
+// ゲームフラグ
+let gameFlg = false;
+
 // 画面が読み込まれたら
 window.onload = () => {
     
@@ -81,35 +84,23 @@ window.onload = () => {
 
 // カードを出す
 function playCard(cardDivTag /*or cardLoc*/ ) {
-    // 出すカードの手札のインデックスを取得
-    const nodeList = document.querySelectorAll(".player-hand");
-    const index = playCardHandIndex(nodeList, cardDivTag);
-    
 
     // 場にあるカードを消去
     const playedCard = document.querySelector(".play-player-card img");
     const playedComCard = document.querySelector(".play-com-card img");
     if(playedCard !== null) playedCard.remove();
     if(playedComCard !== null) playedComCard.remove();
+    
+    // カードを出す(戻り値はカードの数字)
+    const numPlayer = playPlayer(cardDivTag);
+    const numCom    = playCom();
 
-    // カードを出す場所を取得
-    const playComArea = document.querySelector(".play-com-card");
-    const playPlayerArea = document.querySelector(".play-player-card");
-
-    // 出すカードを取得し、カード置き場に出す
-    const CardImg = cardDivTag.firstChild;
-    playPlayerArea.appendChild(CardImg);
+    battle(numPlayer, numCom);
 
 
-    battle();
 
-    // 手札を追加
-    playerHand[index] = getCardArrayIndex();
+    //if() result();
 
-    /*
-    // 手札を新しく追加
-    el.appendChild(getImgObj() );
-    */
 }
 
 function getCardArrayIndex() {
@@ -158,18 +149,63 @@ function addImgToDivTag(cardArray, cardLoc) {
     // カード数字が0は本来無い
     if( cardArray[1] !== 0){
         newImg.src = `../img/cards/${cardArray[0]}-${cardArray[1]}.png`;
+        cardLoc.appendChild(newImg);
     }
     else {
-        newImg.src = "../img/cards/card-back.png";
+        //newImg.src = "../img/cards/card-back.png";
+        cardLoc.remove();
     }
     
-    cardLoc.appendChild(newImg);
+    
 }
 
 function playCardHandIndex(nodeList, target) {
     return Array.prototype.indexOf.call(nodeList, target);
 }
 
-function battle() {
+function playPlayer(cardDivTag) {
+    // プレイヤーのカードを出す場所を取得
+    const playArea = document.querySelector(".play-player-card");
+
+    // カードを出す
+    playArea.appendChild(cardDivTag.firstChild);
+
+    // 出すカードの手札のインデックスを取得
+    const nodeList = document.querySelectorAll(".player-hand");
+    const index = playCardHandIndex(nodeList, cardDivTag);
+
+    // 手札を更新
+    tmpPlayCard = playerHand[index];
+    playerHand[index] = getCardArrayIndex();
+    addImgToDivTag(playerHand[index], cardDivTag);
+
+    return tmpPlayCard[1];
+}
+
+function playCom() {
+    // カードを出す場所を取得
+    const playArea = document.querySelector(".play-com-card");
+
+    // 出すカードの手札のインデックスを取得
+    let index
+    do{
+        index = Math.floor(Math.random() * 5);
+    } 
+    while(comHand[index][1]  === 0);
     
+    // カードを出す
+    addImgToDivTag(comHand[index], playArea);
+
+    // 手札を更新
+    tmpPlayCard = comHand[index];
+    comHand[index] = getCardArrayIndex();
+
+    return tmpPlayCard[1];
+}
+
+function battle(player, com) {
+    // カードを出す場を取得
+    const playedCard = document.querySelector(".play-player-card img");
+    const playedComCard = document.querySelector(".play-com-card img");
+
 }
