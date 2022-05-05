@@ -1,3 +1,7 @@
+img {
+    border: solid rgb(128, 128, 128) thin;
+}
+
 #display {
     height: 40rem;  /*一時的*/
     width: 100%;
@@ -23,6 +27,10 @@
     height: 100%;
 }
 
+.com-hand *{
+    border: none;
+}
+
 .com-hand img, .player-hand img {
     width: auto;
     height: 100%;
@@ -32,11 +40,36 @@
     height: 100%;
     width: 49%;
     display: inline-block;
+    position: relative;
     border: solid red;
+}
+
+.play-com-card {
+    border: solid blue;
 }
 
 .play-com-card img, .play-player-card img {
     width: auto;
     height: 100%;
-    border: solid #000;
+}
+
+.number {
+    font-size: 5.5rem;
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+    opacity: 0.75;
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.numberCom {
+    color: blue;
+    left: 20%;
+}
+
+.end {
+    pointer-events: none;
+    display: none;
 }
