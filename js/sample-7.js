@@ -84,14 +84,15 @@ window.onload = () => {
 // カードを出す
 function playCard(cardDivTag /*or cardLoc*/ ) {
 
-    // 場にあるカードを消去
+    // カード出し場にある要素を消去
+    const child = document.querySelector(".result-text");
     const PCard = document.querySelector(".play-player-card");
     const CCard = document.querySelector(".play-com-card");
 
+    if(child !== null) child.remove();
     while(PCard.firstChild){
         PCard.removeChild(PCard.firstChild);
     }
-
     while(CCard.firstChild){
         CCard.removeChild(CCard.firstChild);
     }
@@ -100,8 +101,14 @@ function playCard(cardDivTag /*or cardLoc*/ ) {
     const numPlayer = playPlayer(cardDivTag);
     const numCom    = playCom();
 
-    battle(numPlayer, numCom);
+    const result = function() {
+        battle(numPlayer, numCom)
+        .then(showResult())
+    };
 
+    result();
+    
+    //battle(numPlayer, numCom);
 
 
     //if() result(); endクラスがついているかの判定で出来る
@@ -167,7 +174,85 @@ function playCom() {
     return tmpPlayCard[1];
 }
 
-function battle(player, com) {
+function battle(player, com){
+    console.log(1);
+    const cardArea = document.querySelector("#card-area");
+    const hand = document.querySelectorAll(".player-hand");
+    hand.forEach(el => {
+        el.classList.add("event-none");
+    });
+
+    return new Promise(resolve =>{
+        setTimeout(() => {
+            if(player  !== com){
+                // 勝敗を代入
+                const resultPlayer = (player > com ? "Win":"Lose");
+                const resultCom    = (player < com ? "Win":"Lose");
+        
+                // 勝敗を表示する
+                const newTag = document.createElement("p");
+                const newText = document.createTextNode(`${resultCom} - ${resultPlayer}`);
+                newTag.appendChild(newText);
+                newTag.classList.add("result-text");
+                cardArea.appendChild(newTag);
+            }
+            else {
+                // 引き分けを表示する
+                const newTag = document.createElement("p");
+                const newText = document.createTextNode("DRAW");
+                newTag.appendChild(newText);
+                newTag.classList.add("result-text");
+                cardArea.appendChild(newTag);
+            }
+    
+            hand.forEach(el => {
+                el.classList.remove("event-none");
+            });
+        }, 1000);
+    });
+}
+
+function old_battle(player, com) {
+    
+    const cardArea = document.querySelector("#card-area");
+    const hand = document.querySelectorAll(".player-hand");
+    hand.forEach(el => {
+        el.classList.add("event-none");
+    });
+
+    setTimeout(() => {
+        if(player  !== com){
+            // 勝敗を代入
+            const resultPlayer = (player > com ? "Win":"Lose");
+            const resultCom    = (player < com ? "Win":"Lose");
+    
+            // 勝敗を表示する
+            const newTag = document.createElement("p");
+            const newText = document.createTextNode(`${resultCom} - ${resultPlayer}`);
+            newTag.appendChild(newText);
+            newTag.classList.add("result-text");
+            cardArea.appendChild(newTag);
+        }
+        else {
+            // 引き分けを表示する
+            const newTag = document.createElement("p");
+            const newText = document.createTextNode("Draw");
+            newTag.appendChild(newText);
+            newTag.classList.add("result-text");
+            cardArea.appendChild(newTag);
+        }
+
+        hand.forEach(el => {
+            el.classList.remove("event-none");
+        });
+    }, 1000);
+}
+
+function showResult() {
+    setTimeout(() => {
+        
+    }, 1000)
+    
     
 }
 
@@ -209,7 +294,7 @@ function getCardArrayIndex() {
     return [suit, num];
 }
 
-function addImgToDivTag(cardArray, cardLoc) {
+function addImgToDivTag(cardArray, div) {
     
     const newImg = document.createElement("img");
 
@@ -217,10 +302,10 @@ function addImgToDivTag(cardArray, cardLoc) {
     // カード数字が0は本来無い
     if( cardArray[1] !== 0){
         newImg.src = `../img/cards/${cardArray[0]}-${cardArray[1]}.png`;
-        cardLoc.appendChild(newImg);
+        div.appendChild(newImg);
     }
     else {
-        cardLoc.classList.add("end");
+        div.classList.add("end");
     }
     
     

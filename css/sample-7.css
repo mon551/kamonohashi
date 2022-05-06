@@ -10,6 +10,24 @@ img {
 #card-area {
     height: calc(100% - 60%);
     text-align: center;
+    position: relative;
+}
+
+.result-text {
+    width: 70%;
+    background: rgb(216, 216, 216);
+    font-size: 3.5rem;
+    color: rgb(255, 97, 97);
+    margin-left: 1%;
+    padding: 0.2rem 1rem;
+    border: solid thin black;
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0.9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
                             
 #com-area, #player-area{
@@ -72,4 +90,9 @@ img {
 .end {
     pointer-events: none;
     display: none;
+}
+
+.event-none{
+    pointer-events: none;
+    filter: brightness(80%);
 }
