@@ -48,7 +48,7 @@ body {
 
 .breadcrumb li {
 	position: relative;
-	padding-right: calc(16px + 8px);    /*  */
+	padding-right: calc(16px + 8px);
 	margin-right: 8px;
 	color: #2685f1;
 }
@@ -109,6 +109,8 @@ footer {
 /*コンテナ*/
 .container{
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin: calc(100% - 98%) calc(100% - 90%);
 }
 
