@@ -109,8 +109,6 @@ footer {
 /*コンテナ*/
 .container{
     display: flex;
-    align-items: center;            /*2行*/
-    justify-content: center;
     margin: calc(100% - 98%) calc(100% - 90%);
 }
 
