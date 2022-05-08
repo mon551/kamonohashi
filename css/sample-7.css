@@ -49,6 +49,7 @@ img {
 .game-start-button {
     font-size: 1.8rem;
     border: solid;
+    border-radius: 10px;
     padding: 0.5rem;
     margin-top: 1rem;
 }
@@ -57,10 +58,12 @@ img {
     background: rgb(184, 184, 184);
     cursor : pointer;
 }
+/*---ルール説明(ここまで)---*/
 
 #card-area {
     height: calc(100% - 60%);
     text-align: center;
+    display: flex;
     position: relative;
 }
 
@@ -81,18 +84,20 @@ img {
 }
                             
 #com-area, #player-area{
-    height: calc(100% - 70%);
+    width: 100%;
+    height: 30%;
     text-align: center;
     border: solid;
-}
+    display: flex;
 
-#com-area *, #player-area * {
-    display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
 
 .com-hand, .player-hand {
-    width: calc(100% / 6);
+    width: calc(100% / 5);
     height: 100%;
+    margin: 0 1%;
 }
 
 .com-hand *{
@@ -106,7 +111,7 @@ img {
 
 .play-com-card, .play-player-card {
     height: 100%;
-    width: 49.5%;
+    width: 50%;
     display: inline-block;
     position: relative;
     border: solid red;
@@ -222,7 +227,7 @@ img {
 }
 
 .is-hidden {
-    display: none;
+    display: none!important;
 }
 
 .end {
@@ -235,19 +240,24 @@ img {
     filter: brightness(80%);
 }
 
-/*ローディング*/
+/*---ローディングアニメーション---*/
 .waveform {
     --uib-size: 40px;
     --uib-speed: 1s;
     --uib-color: black;
     --uib-line-weight: 3.5px;
-  
+
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
     width: var(--uib-size);
     height: calc(var(--uib-size) * 0.9);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
   .waveform__bar {
@@ -285,4 +295,3 @@ img {
       transform: scaleY(1);
     }
   }
-  

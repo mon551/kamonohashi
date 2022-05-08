@@ -67,24 +67,24 @@ window.onload = () =>{
     const button = document.createElement("p");
     button.classList.add("game-start-button");
     button.innerHTML = "ゲームを始める";
+    // クリックするとゲームスタート
     button.onclick = () => {
-
         // ルール説明を消す
         screen.removeChild(descriptionScreen);
-        // ゲーム画面を表示する
-        /*
-        const gameScreen = document.querySelectorAll("#screen *");
-        gameScreen.forEach(el => {
-            el.classList.remove("is-hidden");
-        });
-        */
-
-        const game = () => {
-            loading(1000)
-            .then(gameStart())
-        };
-        game();
         
+        // ロード画面を表示し、ゲームをスタートする
+        loading(1500)
+        .then(() => {
+            // ゲーム画面を表示する
+            return new Promise(resolve => {
+                const gameScreen = document.querySelectorAll("#screen *");
+                gameScreen.forEach(el => {
+                    el.classList.remove("is-hidden");
+                });
+                resolve();
+            })
+        })
+        .then(gameStart());
     }
 
     // 要素を追加する
@@ -93,10 +93,10 @@ window.onload = () =>{
     descriptionScreen.appendChild(sampleImg);
     descriptionScreen.appendChild(button);
 
+    // スクリーンに説明を表示する
     const screen = document.querySelector("#screen");
     screen.appendChild(descriptionScreen);
 }
-
 
 function gameStart() {
     // ---comの初期設定---
@@ -307,7 +307,7 @@ function showWinOrLose(player, com){
             hand.forEach(el => {
                 el.classList.remove("event-none");
             });
-            
+            resolve();
         }, 800);
     });
 }
@@ -435,6 +435,7 @@ function playCardHandIndex(nodeList, target) {
 
 function loading(time){
     return new Promise(resolve => {
+        
         // ロードアニメーションを追加
         const waveform = document.createElement("div");
         waveform.classList.add("waveform");
@@ -450,18 +451,10 @@ function loading(time){
 
         // 指定秒待つ
         setTimeout(() =>{
-            // 消す
-            console.log(1);
+            // ローディングを消す
+            waveform.remove();
+            resolve();
         }, time);
-
     });
 }
 
-/*
-    優先度順
-    最初に説明画面の表示
-    Aが一番強い
-    保留カードの表示
-    トランプが重ならないように頑張る
-    アニメーション
-*/
