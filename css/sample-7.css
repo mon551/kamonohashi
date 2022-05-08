@@ -105,8 +105,8 @@ img {
 }
 
 .com-hand img, .player-hand img {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto; max-height: 180px;
 }
 
 .play-com-card, .play-player-card {
