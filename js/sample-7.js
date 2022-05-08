@@ -357,7 +357,7 @@ function showResult() {
             const backToHome = document.createElement("p");
             backToHome.classList.add("page-transition");
             backToHome.innerHTML = "HOMEに戻る";
-            backToHome.onclick = () => document.location.href = "/";
+            backToHome.onclick = () => document.location.href = "https://mon551.github.io/kamonohashi/";
 
             // 生成した要素をresultに入れる
             result.appendChild(resultTitle);
