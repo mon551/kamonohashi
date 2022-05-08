@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -47,7 +48,7 @@ body {
 
 .breadcrumb li {
 	position: relative;
-	padding-right: calc(16px + 8px);    /*  */
+	padding-right: calc(16px + 8px);
 	margin-right: 8px;
 	color: #2685f1;
 }
@@ -108,6 +109,8 @@ footer {
 /*コンテナ*/
 .container{
     display: flex;
+    align-items: center;            /*2行*/
+    justify-content: center;
     margin: calc(100% - 98%) calc(100% - 90%);
 }
 
@@ -286,3 +289,9 @@ aside {
     
 }
 
+@media screen and (max-width: 500px){
+    html {
+        font-size: 12px;
+    }
+    
+}
