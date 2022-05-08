@@ -33,8 +33,73 @@ let playerCardEarnNum = 0;
 let comCardEarnNum    = 0;
 let cardPending       = 0;
 
-window.onload = () => {
-    
+// 最初は画面を隠しておく
+const game = document.querySelectorAll("#screen *");
+game.forEach(el => {
+    el.classList.add("is-hidden");
+});
+
+window.onload = () =>{
+    // 説明画面
+    const descriptionScreen = document.createElement("div");
+    descriptionScreen.id = "description-screen";
+
+    // 説明表題
+    const title = document.createElement("p");
+    title.innerHTML = "--ルール説明--";
+    title.classList.add("description-title");
+
+    // ルール説明
+    const rule = document.createElement("p");
+    rule.innerHTML = "<span>二人で遊ぶトランプゲーム</span><br>"+
+                        "カードを出し合いカードの数の大小を比べて、"+
+                        "より大きい数字を出したほうがカードを獲得できる<br>"+
+                        "最終的に獲得したカード数が多いほうが勝ち<br>"+
+                        "(ジョーカーは除く)";
+    rule.classList.add("description-rule");
+
+    // イメージ画像表示
+    const sampleImg = document.createElement("img");
+    sampleImg.src = "../img/sample-7.svg";
+    sampleImg.classList.add("sample-img");
+
+    // ゲームを始めるボタン
+    const button = document.createElement("p");
+    button.classList.add("game-start-button");
+    button.innerHTML = "ゲームを始める";
+    button.onclick = () => {
+
+        // ルール説明を消す
+        screen.removeChild(descriptionScreen);
+        // ゲーム画面を表示する
+        /*
+        const gameScreen = document.querySelectorAll("#screen *");
+        gameScreen.forEach(el => {
+            el.classList.remove("is-hidden");
+        });
+        */
+
+        const game = () => {
+            loading(1000)
+            .then(gameStart())
+        };
+        game();
+        
+    }
+
+    // 要素を追加する
+    descriptionScreen.appendChild(title);
+    descriptionScreen.appendChild(rule);
+    descriptionScreen.appendChild(sampleImg);
+    descriptionScreen.appendChild(button);
+
+    const screen = document.querySelector("#screen");
+    screen.appendChild(descriptionScreen);
+}
+
+
+function gameStart() {
+    // ---comの初期設定---
     // comの初期手札を生成
     for(let i=0; i<5; i++){
 
@@ -55,7 +120,16 @@ window.onload = () => {
         newDiv.appendChild(newImg);
         comArea.appendChild(newDiv);
     }
+    // comの獲得枚数を表示する場所を生成
+    const comEarnNumElement = document.createElement("p");
+    comEarnNumElement.classList.add("com-earn-num");
+    comEarnNumElement.innerHTML = `${comCardEarnNum}`;
 
+    // 獲得枚数を表示
+    const comPlayArea = document.querySelector(".play-com-card");
+    comPlayArea.appendChild(comEarnNumElement);
+
+    // ---プレイヤーの初期設定---
     // プレイヤーの初期手札を生成
     for(let i=0; i<5; i++){
 
@@ -70,74 +144,80 @@ window.onload = () => {
         newDiv.classList.add("player-hand");
         
         // 手札のカード配列と表示する場所を渡す
-        addImgToDivTag(playerHand[i], newDiv);
+        addImgToDivElement(playerHand[i], newDiv);
        
         // img要素を持ったdivタグを手札に追加する
         playerArea.appendChild(newDiv);
     }
+    // プレイヤーの獲得枚数を表示する場所を生成
+    const playerEarnNumElement = document.createElement("p");
+    playerEarnNumElement.classList.add("player-earn-num");
+    playerEarnNumElement.innerHTML = `${playerCardEarnNum}`;
+
+    // 獲得枚数を表示
+    const playerPlayArea = document.querySelector(".play-player-card");
+    playerPlayArea.appendChild(playerEarnNumElement);
 
     // プレイヤーの手札を取得し、クリックイベントを付与する
-    const NodeList = document.querySelectorAll(".player-hand");
-    NodeList.forEach(el => {
+    const hand = document.querySelectorAll(".player-hand");
+    hand.forEach(el => {
         el.addEventListener('click', function(){playCard(el); }, false )
     });
 }
 
 // カードを出す
-function playCard(cardDivTag /*or cardLoc*/ ) {
+function playCard(playerPlayCard) {
 
-    // カード出し場にある要素を消去
-    const child = document.querySelector(".win-or-loss-text");
-    const PCard = document.querySelector(".play-player-card");
-    const CCard = document.querySelector(".play-com-card");
-
+    // カード出し場にある要素を取得
+    const child = document.querySelector(".win-or-lose-text");
+    const PCard = document.querySelectorAll(".play-player-card *");
+    const CCard = document.querySelectorAll(".play-com-card *");
+    // 消去
     if(child !== null) child.remove();
-    while(PCard.firstChild){
-        PCard.removeChild(PCard.firstChild);
-    }
-    while(CCard.firstChild){
-        CCard.removeChild(CCard.firstChild);
-    }
+    PCard.forEach(el => {
+        if(el.className !== "player-earn-num") el.remove();
+    });
+    CCard.forEach(el => {
+        if(el.className !== "com-earn-num") el.remove();
+    });
 
     // カードを出す(戻り値は出したカードの数字)
-    const numPlayer = playPlayer(cardDivTag);
+    const numPlayer = playPlayer(playerPlayCard);
     const numCom    = playCom();
 
     // 結果を表示
     const result = () => {
-        showWinOrLoss(numPlayer, numCom)
+        showWinOrLose(numPlayer, numCom)
         .then(showResult())
     };
     result();
 }
 
-function playPlayer(cardDivTag) {
+function playPlayer(playerPlayCard) {
     // プレイヤーのカードを出す場所を取得
     const playArea = document.querySelector(".play-player-card");
 
     // 出すカードの手札のインデックスを取得
     const nodeList = document.querySelectorAll(".player-hand");
-    const index = playCardHandIndex(nodeList, cardDivTag);
+    const index = playCardHandIndex(nodeList, playerPlayCard);
 
-    // 出したカードの数字を表示する
-    tmpPlayCard = playerHand[index];
-    // pタグ生成し、内容を追加
-    const newTag = document.createElement("p");
-    const newText = document.createTextNode(`${tmpPlayCard[1]}`);
-    newTag.appendChild(newText);
-    newTag.classList.add("number");
+    // 出したカードの数字の入った要素を作成
+    const cardNumElement = document.createElement("p");
+    cardNumElement.innerHTML = `${playerHand[index][1]}`
+    cardNumElement.classList.add("card-number");
 
     // カードを出す
-    playArea.appendChild(cardDivTag.firstChild);
+    playArea.appendChild(playerPlayCard.firstChild);
     // カードの数字を表示
-    playArea.appendChild(newTag);
-
+    playArea.appendChild(cardNumElement);
     
     // 手札を更新
+    tmpPlayedNum = playerHand[index][1];
     playerHand[index] = getCardArrayIndex();
-    addImgToDivTag(playerHand[index], cardDivTag);
+    addImgToDivElement(playerHand[index], playerPlayCard);
     
-    return tmpPlayCard[1];
+    // 出したカードの数値を返す
+    return tmpPlayedNum;
 }
 
 function playCom() {
@@ -151,20 +231,18 @@ function playCom() {
     } 
     while(comHand[index][1]  === 0);
 
-    // 出したカードの数字を表示する
-    tmpPlayCard = comHand[index];
-    // pタグ生成し、内容を追加
-    const newTag = document.createElement("p");
-    const newText = document.createTextNode(`${tmpPlayCard[1]}`);
-    newTag.appendChild(newText);
-    newTag.classList.add("number", "number-com");
-    
+    // 出したカードの数字の入った要素を作成
+    const cardNumElement = document.createElement("p");
+    cardNumElement.innerHTML = `${comHand[index][1]}`
+    cardNumElement.classList.add("card-number", "number-com");
+
     // カードを出す
-    addImgToDivTag(comHand[index], playArea);
+    addImgToDivElement(comHand[index], playArea);
     // カードの数字を表示
-    playArea.appendChild(newTag);
+    playArea.appendChild(cardNumElement);
 
     // 手札を更新
+    tmpPlayedNum = comHand[index][1];
     comHand[index] = getCardArrayIndex();
 
     // 山札が切れたら、手札に追加しない
@@ -174,16 +252,16 @@ function playCom() {
         hand[index].classList.add("end");
         // imgを消す
         hand[index].firstChild.remove();
-    } 
+    }
     
-    return tmpPlayCard[1];
+    // カードの数値を返す
+    return tmpPlayedNum;
 }
 
-function showWinOrLoss(player, com){
+function showWinOrLose(player, com){
 
-    return new Promise(resolve =>{
+    return new Promise(resolve => {
          // 手札のイベントを無効化する
-        const cardArea = document.querySelector("#card-area");
         const hand = document.querySelectorAll(".player-hand");
         hand.forEach(el => {
             el.classList.add("event-none");
@@ -191,6 +269,10 @@ function showWinOrLoss(player, com){
 
         // 1秒後に勝敗結果を表示
         setTimeout(() => {
+            // 出すカードを表示するエリア
+            const cardArea = document.querySelector("#card-area");
+            
+            
             if(player  !== com){
                 // 勝った分のカードを獲得する
                 playerCardEarnNum += (player > com ? 2+cardPending : 0);
@@ -198,26 +280,27 @@ function showWinOrLoss(player, com){
                 // 保留カードを0にする
                 cardPending = 0;
 
-                // 勝敗テキストを代入
-                const resultPlayer = (player > com ? "Win":"Lose");
-        
                 // 勝敗を表示する
-                const newTag = document.createElement("p");
-                const newText = document.createTextNode(`${resultPlayer}`);
-                newTag.appendChild(newText);
-                newTag.classList.add("win-or-loss-text");
-                cardArea.appendChild(newTag);
+                const newElement = document.createElement("p");
+                newElement.innerHTML = `${(player > com ? "WIN":"LOSE")}` ;               
+                newElement.classList.add("win-or-lose-text");
+                cardArea.appendChild(newElement);
+
+                // 現在の獲得カード枚数を表示する
+                const playerEarnArea     = document.querySelector(".player-earn-num");
+                playerEarnArea.innerHTML = `${playerCardEarnNum}`;
+                const comEarnNum     = document.querySelector(".com-earn-num");
+                comEarnNum.innerHTML = `${comCardEarnNum}`
             }
             else {
                 // カードを保留する
                 cardPending += 2;
 
                 // 引き分けテキストを表示する
-                const newTag = document.createElement("p");
-                const newText = document.createTextNode("DRAW");
-                newTag.appendChild(newText);
-                newTag.classList.add("win-or-loss-text");
-                cardArea.appendChild(newTag);
+                const newElement = document.createElement("p");
+                newElement.innerHTML = "DRAW";
+                newElement.classList.add("win-or-lose-text");
+                cardArea.appendChild(newElement);
             }
             
             // 手札のイベントを復活させる
@@ -260,9 +343,9 @@ function showResult() {
             resultCom.innerHTML = `<span class="com">コンピュータ</span>：${comCardEarnNum}枚`;
 
             // 勝敗結果を表示する要素
-            const winOrLossText = document.createElement("p");
-            winOrLossText.classList.add("result-win-or-loss");
-            winOrLossText.innerHTML = `あなたの<br>${(playerCardEarnNum > comCardEarnNum? "勝ちです:)" : "負けです:(")}`;
+            const winOrLoseText = document.createElement("p");
+            winOrLoseText.classList.add("result-win-or-lose");
+            winOrLoseText.innerHTML = `あなたの<br>${(playerCardEarnNum > comCardEarnNum? "勝ちです:)" : "負けです:(")}`;
 
             // もう一度遊ぶ
             const playAgain = document.createElement("p");
@@ -281,7 +364,7 @@ function showResult() {
             result.appendChild(resultText);
             result.appendChild(resultPlayer);
             result.appendChild(resultCom);
-            result.appendChild(winOrLossText);
+            result.appendChild(winOrLoseText);
             result.appendChild(playAgain);
             result.appendChild(backToHome);
 
@@ -329,7 +412,7 @@ function getCardArrayIndex() {
     return [suit, num];
 }
 
-function addImgToDivTag(cardArray, div) {
+function addImgToDivElement(cardArray, div) {
     
     const newImg = document.createElement("img");
 
@@ -350,12 +433,34 @@ function playCardHandIndex(nodeList, target) {
     return Array.prototype.indexOf.call(nodeList, target);
 }
 
+function loading(time){
+    return new Promise(resolve => {
+        // ロードアニメーションを追加
+        const waveform = document.createElement("div");
+        waveform.classList.add("waveform");
+
+        for(let i=0; i<4; i++){
+            const bar = document.createElement("div");
+            bar.classList.add("waveform__bar");
+            waveform.appendChild(bar);
+        }
+
+        const screen = document.querySelector("#screen");
+        screen.appendChild(waveform);
+
+        // 指定秒待つ
+        setTimeout(() =>{
+            // 消す
+            console.log(1);
+        }, time);
+
+    });
+}
+
 /*
     優先度順
-    tagをElementに変更
-    cardDivTagの名前を変更
     最初に説明画面の表示
-    現在のカード枚数
+    Aが一番強い
     保留カードの表示
     トランプが重ならないように頑張る
     アニメーション

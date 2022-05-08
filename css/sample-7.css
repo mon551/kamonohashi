@@ -8,13 +8,63 @@ img {
     position: relative;
 }
 
+/*---ルール説明---*/
+#description-screen {
+    height: auto;
+    width: 70%; min-width: 60%; max-width: 70%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: rgb(221, 221, 221);
+    border: solid thick;
+    border-radius: 20px;
+    padding: 0.5rem 1rem 1rem;
+    opacity: 0.9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.description-title {
+    font-size: 2.5rem;
+    padding: 0.5rem 0 1rem;
+}
+
+.description-rule {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.description-rule span{
+    font-weight: bold;
+}
+
+.sample-img {
+    width: 80%;
+    margin: 1rem 0.5rem;
+    border: none;
+}
+
+.game-start-button {
+    font-size: 1.8rem;
+    border: solid;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}
+
+.game-start-button:hover {
+    background: rgb(184, 184, 184);
+    cursor : pointer;
+}
+
 #card-area {
     height: calc(100% - 60%);
     text-align: center;
     position: relative;
 }
 
-.win-or-loss-text {
+.win-or-lose-text {
     width: 40%;
     background: rgba(216, 216, 216, 0.7);
     font-size: 3.5rem;
@@ -71,7 +121,26 @@ img {
     height: 100%;
 }
 
-.number {
+.com-earn-num, .player-earn-num {
+    font-size: 3rem;
+    position: absolute;
+    
+    padding: 0 0.5rem;
+}
+
+.player-earn-num {
+    left: 0%;
+    border-right: solid red;
+    border-bottom: solid  red;
+}
+
+.com-earn-num {
+    right: 0%;
+    border-left: solid  blue;
+    border-bottom: solid  blue;
+}
+
+.card-number {
     font-size: 5.5rem;
     font-weight: bold;
     color: rgb(255, 0, 0);
@@ -131,7 +200,7 @@ img {
     color: blue;
 }
 
-.result-win-or-loss {
+.result-win-or-lose {
     font-size: 2.5rem;
     padding: 1rem 0.5rem;
 }
@@ -149,6 +218,11 @@ img {
 
 .page-transition:hover {
     background: rgb(199, 199, 199);
+    cursor : pointer;
+}
+
+.is-hidden {
+    display: none;
 }
 
 .end {
@@ -160,3 +234,55 @@ img {
     pointer-events: none;
     filter: brightness(80%);
 }
+
+/*ローディング*/
+.waveform {
+    --uib-size: 40px;
+    --uib-speed: 1s;
+    --uib-color: black;
+    --uib-line-weight: 3.5px;
+  
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--uib-size);
+    height: calc(var(--uib-size) * 0.9);
+  }
+  
+  .waveform__bar {
+    width: var(--uib-line-weight);
+    height: 100%;
+    background-color: var(--uib-color);
+  }
+  
+  .waveform__bar:nth-child(1) {
+    animation: grow var(--uib-speed) ease-in-out
+      calc(var(--uib-speed) * -0.45) infinite;
+  }
+  
+  .waveform__bar:nth-child(2) {
+    animation: grow var(--uib-speed) ease-in-out
+      calc(var(--uib-speed) * -0.3) infinite;
+  }
+  
+  .waveform__bar:nth-child(3) {
+    animation: grow var(--uib-speed) ease-in-out
+      calc(var(--uib-speed) * -0.15) infinite;
+  }
+  
+  .waveform__bar:nth-child(4) {
+    animation: grow var(--uib-speed) ease-in-out infinite;
+  }
+  
+  @keyframes grow {
+    0%,
+    100% {
+      transform: scaleY(0.3);
+    }
+  
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  
